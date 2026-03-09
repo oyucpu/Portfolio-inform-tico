@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antonio Oyuela Sánchez — Técnico Informático</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#f5f2eb;--surface:#edeae1;--card:#ffffff;--border:#d8d3c8;
+    --ink:#1a1814;--ink2:#3d3a34;--muted:#8a8679;
+    --accent:#1a4fd6;--accent2:#d64a1a;--accent-bg:rgba(26,79,214,0.07);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.6}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(245,242,235,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--muted);letter-spacing:.08em;text-decoration:none}
+  .nav-logo strong{color:var(--ink);font-weight:500}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:500;letter-spacing:.04em;transition:color .2s;position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--accent);transition:width .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-badge{font-family:'DM Mono',monospace;font-size:.65rem;background:var(--accent);color:#fff;padding:.3rem .75rem;letter-spacing:.08em}
+
+  /* HERO */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1;padding-top:5rem}
+  .hero-left{padding:6rem 3rem 5rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+  .hero-eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.75rem;opacity:0;animation:fadeUp .7s .2s forwards}
+  .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--accent)}
+  .hero-name{font-family:'DM Serif Display',serif;font-size:clamp(3rem,5vw,5.5rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:.5rem;opacity:0;animation:fadeUp .7s .35s forwards}
+  .hero-name em{font-style:italic;color:var(--accent)}
+  .hero-role{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .5s forwards}
+  .hero-desc{font-size:1.05rem;color:var(--ink2);line-height:1.75;max-width:460px;margin-bottom:3rem;opacity:0;animation:fadeUp .7s .65s forwards;font-weight:400}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .8s forwards}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--ink);color:var(--bg)}
+  .btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,79,214,.2)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .hero-right{padding:5rem 4rem 5rem 3rem;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;opacity:0;animation:fadeIn .8s .9s forwards}
+  .info-block{border:1px solid var(--border);background:var(--card);padding:1.5rem;transition:border-color .2s,box-shadow .2s}
+  .info-block:hover{border-color:var(--accent);box-shadow:4px 4px 0 var(--accent)}
+  .info-block-label{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+  .info-block-value{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+  .info-block-sub{font-size:.85rem;color:var(--muted);line-height:1.5}
+  .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;margin-right:.4rem;animation:pulse 2s infinite}
+
+  /* SECTIONS */
+  .container{max-width:1140px;margin:0 auto;padding:0 4rem}
+  .section{padding:7rem 0;position:relative;z-index:1}
+  .section+.section{border-top:1px solid var(--border)}
+  .section-label{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+  .section-label::before{content:attr(data-num);color:var(--muted)}
+  .section-title{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:4rem}
+  .section-title em{font-style:italic;color:var(--accent)}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .skill-card{background:var(--card);padding:2rem;transition:background .2s;position:relative;overflow:hidden}
+  .skill-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+  .skill-card:hover{background:var(--accent-bg)}
+  .skill-card:hover::before{transform:scaleX(1)}
+  .skill-icon{font-size:2rem;margin-bottom:1rem;display:block}
+  .skill-card-title{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:.75rem;letter-spacing:-.01em}
+  .skill-card-desc{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem}
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem}
+  .tag{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--ink2);background:var(--surface);border:1px solid var(--border);padding:.25rem .6rem;letter-spacing:.06em;transition:all .15s}
+  .tag:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* ═══════════════════════════════════════
+     PROYECTOS INTERACTIVOS
+  ═══════════════════════════════════════ */
+  .projects-tabs{display:flex;gap:0;border:1px solid var(--border);margin-bottom:2rem;overflow-x:auto}
+  .proj-tab{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 1.5rem;background:var(--card);border:none;border-right:1px solid var(--border);cursor:pointer;color:var(--muted);transition:all .2s;white-space:nowrap;flex-shrink:0}
+  .proj-tab:last-child{border-right:none}
+  .proj-tab.active{background:var(--ink);color:var(--bg)}
+  .proj-tab:hover:not(.active){background:var(--surface);color:var(--ink)}
+
+  .proj-panel{display:none}
+  .proj-panel.active{display:block}
+
+  /* WINDOW CHROME (shared) */
+  .win-chrome{border:1px solid var(--border);background:var(--card);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+  .win-titlebar{display:flex;align-items:center;gap:.75rem;padding:.6rem 1rem;background:#e8e5de;border-bottom:1px solid var(--border)}
+  .win-btn{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .win-btn.red{background:#ff5f57}
+  .win-btn.yellow{background:#febc2e}
+  .win-btn.green{background:#28c840}
+  .win-title{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);margin-left:.5rem;letter-spacing:.05em}
+
+  /* ── WIRESHARK ── */
+  .ws-toolbar{display:flex;align-items:center;gap:.5rem;padding:.5rem .75rem;background:#f0ede6;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .ws-btn{font-family:'DM Mono',monospace;font-size:.65rem;padding:.3rem .6rem;background:#fff;border:1px solid var(--border);cursor:pointer;color:var(--ink2);transition:all .15s}
+  .ws-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .ws-btn.capturing{background:#d32f2f;color:#fff;border-color:#d32f2f;animation:blink 1s infinite}
+  .ws-filter{font-family:'DM Mono',monospace;font-size:.7rem;flex:1;min-width:200px;padding:.3rem .6rem;border:1px solid var(--border);background:#fff;color:var(--ink);outline:none}
+  .ws-filter:focus{border-color:var(--accent)}
+  .ws-filter.valid{border-color:#16a34a;background:rgba(22,163,74,.05)}
+  .ws-filter.invalid{border-color:#d32f2f;background:rgba(211,47,47,.05)}
+  .ws-table{width:100%;border-collapse:collapse;font-family:'DM Mono',monospace;font-size:.68rem}
+  .ws-table th{background:#e8e5de;padding:.4rem .75rem;text-align:left;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-size:.6rem;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+  .ws-table th:hover{background:#ddd9d0;color:var(--ink)}
+  .ws-table td{padding:.35rem .75rem;border-bottom:1px solid rgba(0,0,0,.04);color:var(--ink2)}
+  .ws-table tr{cursor:pointer;transition:background .1s}
+  .ws-table tr:hover{background:rgba(26,79,214,.05)}
+  .ws-table tr.selected{background:rgba(26,79,214,.12)!important}
+  .ws-table tr.proto-tcp td:first-child{color:#1a4fd6}
+  .ws-table tr.proto-udp td:first-child{color:#16a34a}
+  .ws-table tr.proto-dns td:first-child{color:#d64a1a}
+  .ws-table tr.proto-http td:first-child{color:#7c3aed}
+  .ws-table tr.proto-icmp td:first-child{color:#0891b2}
+  .ws-scroll{height:260px;overflow-y:auto;overflow-x:auto}
+  .ws-detail{border-top:1px solid var(--border);padding:.75rem;background:#fafaf8;min-height:80px;font-family:'DM Mono',monospace;font-size:.68rem;color:var(--ink2);line-height:1.6}
+  .ws-detail-tree{list-style:none}
+  .ws-detail-tree li{padding:.1rem 0;cursor:pointer}
+  .ws-detail-tree li::before{content:'▸ ';color:var(--accent);font-size:.6rem}
+  .ws-detail-tree li.open::before{content:'▾ ';color:var(--accent)}
+  .ws-detail-sub{padding-left:1.5rem;display:none}
+  .ws-detail-sub.open{display:block}
+  .ws-statusbar{display:flex;gap:2rem;padding:.4rem .75rem;background:#e8e5de;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted)}
+
+  /* ── TRACEROUTE ── */
+  .tr-body{padding:1rem;background:#0d1117;min-height:340px;font-family:'DM Mono',monospace;font-size:.75rem}
+  .tr-prompt{color:#58a6ff;margin-bottom:.5rem}
+  .tr-output{line-height:1.8}
+  .tr-hop{display:grid;grid-template-columns:30px 150px 80px 80px 80px 1fr;gap:.5rem;align-items:center;opacity:0;transition:opacity .3s}
+  .tr-hop.visible{opacity:1}
+  .tr-hop-num{color:#6e7681}
+  .tr-hop-ip{color:#79c0ff}
+  .tr-hop-ms{color:#56d364}
+  .tr-hop-ms.high{color:#f78166}
+  .tr-hop-ms.timeout{color:#6e7681}
+  .tr-hop-host{color:#d2a8ff;font-size:.65rem}
+  .tr-hop-bar{height:6px;background:#21262d;border-radius:3px;overflow:hidden;width:100%;max-width:180px}
+  .tr-hop-fill{height:100%;background:linear-gradient(to right,#56d364,#f78166);border-radius:3px;transition:width .5s ease}
+  .tr-controls{display:flex;gap:.75rem;padding:.75rem 1rem;background:#161b22;border-top:1px solid #30363d}
+  .tr-input{font-family:'DM Mono',monospace;font-size:.75rem;flex:1;padding:.45rem .75rem;background:#0d1117;border:1px solid #30363d;color:#c9d1d9;outline:none;border-radius:2px}
+  .tr-input:focus{border-color:#58a6ff}
+  .tr-run-btn{font-family:'DM Mono',monospace;font-size:.7rem;padding:.45rem 1rem;background:#238636;border:none;color:#fff;cursor:pointer;border-radius:2px;transition:background .2s;letter-spacing:.05em}
+  .tr-run-btn:hover{background:#2ea043}
+  .tr-run-btn:disabled{background:#21262d;color:#6e7681;cursor:not-allowed}
+  .tr-legend{display:flex;gap:1.5rem;padding:.5rem 1rem;background:#161b22;border-top:1px solid #21262d;font-family:'DM Mono',monospace;font-size:.6rem;color:#6e7681}
+  .tr-legend span{display:flex;align-items:center;gap:.4rem}
+  .dot-green{width:8px;height:8px;border-radius:50%;background:#56d364;display:inline-block}
+  .dot-red{width:8px;height:8px;border-radius:50%;background:#f78166;display:inline-block}
+  .dot-gray{width:8px;height:8px;border-radius:50%;background:#6e7681;display:inline-block}
+
+  /* ── TERMINAL CMD ── */
+  .cmd-body{background:#0c0c0c;min-height:360px;padding:.5rem;font-family:'DM Mono',monospace;font-size:.78rem;display:flex;flex-direction:column}
+  .cmd-output{flex:1;overflow-y:auto;max-height:300px;padding:.25rem}
+  .cmd-line{line-height:1.6;white-space:pre-wrap;word-break:break-all}
+  .cmd-line.prompt{color:#cccccc}
+  .cmd-line.prompt .cmd-user{color:#4ec9b0}
+  .cmd-line.prompt .cmd-path{color:#569cd6}
+  .cmd-line.prompt .cmd-sym{color:#cccccc}
+  .cmd-line.output{color:#cccccc;padding-left:0}
+  .cmd-line.error{color:#f44747}
+  .cmd-line.success{color:#4ec9b0}
+  .cmd-line.header{color:#ce9178}
+  .cmd-line.highlight{color:#dcdcaa}
+  .cmd-input-row{display:flex;align-items:center;gap:.25rem;padding:.25rem;border-top:1px solid #1e1e1e;margin-top:.5rem}
+  .cmd-input-prompt{color:#4ec9b0;white-space:nowrap;font-size:.78rem}
+  .cmd-input{flex:1;background:transparent;border:none;outline:none;color:#cccccc;font-family:'DM Mono',monospace;font-size:.78rem;caret-color:#cccccc}
+  .cmd-hint{font-size:.62rem;color:#555;padding:.3rem .5rem;font-family:'DM Mono',monospace}
+
+  /* ── TRIVIAL ── */
+  .trivial-wrap{background:#0c0c0c;font-family:'DM Mono',monospace}
+  .trivial-win-body{display:grid;grid-template-columns:1fr 320px;min-height:480px}
+  .trivial-left{padding:1.5rem;border-right:1px solid #1e1e1e}
+  .trivial-right{padding:1.25rem;background:#0a0a0a;display:flex;flex-direction:column;gap:1rem}
+
+  .trivial-screen{background:#0c0c0c;border:1px solid #1e1e1e;padding:1rem;min-height:200px;margin-bottom:1rem;position:relative;overflow:hidden}
+  .trivial-screen::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.03) 0px,rgba(0,0,0,.03) 1px,transparent 1px,transparent 2px);pointer-events:none}
+  .tq-label{font-size:.6rem;color:#444;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+  .tq-text{font-size:.9rem;color:#00ff41;line-height:1.5;min-height:3em}
+  .tq-hint{font-size:.65rem;color:#444;margin-top:.75rem;font-style:italic}
+
+  .trivial-answers{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem}
+  .tq-answer{background:#111;border:1px solid #1e1e1e;padding:.6rem .75rem;font-size:.72rem;color:#888;cursor:pointer;transition:all .2s;text-align:left;font-family:'DM Mono',monospace;letter-spacing:.03em}
+  .tq-answer:hover:not(:disabled){border-color:#00ff41;color:#00ff41;background:rgba(0,255,65,.05)}
+  .tq-answer.correct{border-color:#00ff41!important;color:#00ff41!important;background:rgba(0,255,65,.1)!important}
+  .tq-answer.wrong{border-color:#f44747!important;color:#f44747!important;background:rgba(244,71,71,.08)!important}
+  .tq-answer:disabled{cursor:not-allowed;opacity:.7}
+
+  .trivial-cmd-input-row{display:flex;gap:.5rem}
+  .trivial-cmd-field{flex:1;background:#111;border:1px solid #1e1e1e;padding:.5rem .75rem;font-family:'DM Mono',monospace;font-size:.75rem;color:#cccccc;outline:none}
+  .trivial-cmd-field:focus{border-color:#00ff41}
+  .trivial-cmd-btn{background:#1a1a1a;border:1px solid #1e1e1e;color:#888;font-family:'DM Mono',monospace;font-size:.7rem;padding:.5rem .9rem;cursor:pointer;transition:all .2s;letter-spacing:.05em}
+  .trivial-cmd-btn:hover{background:#00ff41;color:#000;border-color:#00ff41}
+
+  .trivial-stats{background:#111;border:1px solid #1e1e1e;padding:1rem}
+  .ts-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;font-size:.7rem}
+  .ts-label{color:#555;letter-spacing:.08em;text-transform:uppercase}
+  .ts-val{color:#cccccc;font-weight:500}
+  .ts-val.good{color:#00ff41}
+  .ts-val.bad{color:#f44747}
+  .ts-progress{width:100%;height:4px;background:#1e1e1e;margin-top:.75rem;border-radius:2px;overflow:hidden}
+  .ts-bar{height:100%;background:linear-gradient(to right,#00ff41,#00cc33);border-radius:2px;transition:width .4s ease}
+
+  .trivial-map{background:#0a0a0a;border:1px solid #1e1e1e;padding:.75rem}
+  .tmap-label{font-size:.6rem;color:#444;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+  .tmap-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.35rem}
+  .tmap-cell{aspect-ratio:1;border:1px solid #1e1e1e;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#333;position:relative;transition:all .3s}
+  .tmap-cell.current{border-color:#00ff41;color:#00ff41;background:rgba(0,255,65,.08);animation:cellPulse 1.5s infinite}
+  .tmap-cell.done{border-color:#1e4d1e;background:rgba(0,255,65,.05);color:#1e7d1e}
+  .tmap-cell.blocked{border-color:#4d1e1e;background:rgba(244,71,71,.05);color:#7d1e1e}
+  .tmap-cell.locked{border-color:#1a1a1a;color:#222}
+
+  .trivial-log{background:#0a0a0a;border:1px solid #1e1e1e;padding:.75rem;max-height:100px;overflow-y:auto}
+  .log-label{font-size:.6rem;color:#444;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+  .log-entry{font-size:.65rem;color:#555;line-height:1.5;padding:.1rem 0;border-bottom:1px solid #111}
+  .log-entry.good{color:#2d6a2d}
+  .log-entry.bad{color:#6a2d2d}
+  .log-entry.info{color:#2d4a6a}
+
+  .trivial-next-btn{width:100%;background:#1a1a1a;border:1px solid #00ff41;color:#00ff41;font-family:'DM Mono',monospace;font-size:.75rem;padding:.6rem;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;display:none}
+  .trivial-next-btn.show{display:block}
+  .trivial-next-btn:hover{background:#00ff41;color:#000}
+
+  /* OPEN SOURCE CARDS */
+  .os-card{background:var(--card);border:1px solid var(--border);padding:1rem;position:relative;overflow:hidden;transition:all .2s;cursor:default}
+  .os-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(26,79,214,.1)}
+  .os-card.has-gui{cursor:pointer;border-bottom:2px solid var(--accent)}
+  .os-card.has-gui:hover{box-shadow:0 4px 20px rgba(26,79,214,.2)}
+  .os-card-icon{font-size:1.5rem;margin-bottom:.6rem;display:block}
+  .os-card-name{font-weight:700;font-size:.9rem;margin-bottom:.25rem;color:var(--ink)}
+  .os-card-cat{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem}
+  .os-card-desc{font-size:.75rem;color:var(--muted);line-height:1.5;margin-bottom:.65rem}
+  .os-card-tags{display:flex;flex-wrap:wrap;gap:.25rem}
+  .os-card-tag{font-family:'DM Mono',monospace;font-size:.55rem;padding:.12rem .4rem;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+  .os-card-badge{position:absolute;top:.6rem;right:.6rem;font-family:'DM Mono',monospace;font-size:.52rem;padding:.15rem .45rem;letter-spacing:.08em;text-transform:uppercase}
+  .badge-red{background:rgba(214,74,26,.1);color:var(--accent2);border:1px solid rgba(214,74,26,.2)}
+  .badge-blue{background:rgba(26,79,214,.08);color:var(--accent);border:1px solid rgba(26,79,214,.2)}
+  .badge-green{background:rgba(22,163,74,.08);color:#16a34a;border:1px solid rgba(22,163,74,.2)}
+  .badge-purple{background:rgba(124,58,237,.08);color:#7c3aed;border:1px solid rgba(124,58,237,.2)}
+  .os-filter-btn{font-family:'DM Mono',monospace;font-size:.6rem;padding:.3rem .7rem;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .15s;letter-spacing:.06em}
+  .os-filter-btn.active,.os-filter-btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .nmap-host-chip{font-family:'DM Mono',monospace;font-size:.62rem;padding:.3rem .5rem;background:#16213e;border:1px solid #0f3460;color:#aaa;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.4rem}
+  .nmap-host-chip:hover,.nmap-host-chip.selected{background:#0f3460;color:#e94560;border-color:#e94560}
+  .nmap-host-chip .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0}
+  .nmap-tab-btn.active{color:#e94560!important;border-bottom:2px solid #e94560!important}
+  .nmap-output-line{line-height:1.6}
+  .nmap-line-open{color:#22c55e}
+  .nmap-line-filtered{color:#f59e0b}
+  .nmap-line-closed{color:#ef4444}
+  .nmap-line-header{color:#e94560}
+  .nmap-line-info{color:#60a5fa}
+  .nmap-line-host{color:#a78bfa}
+  .nmap-line-muted{color:#555}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:start}
+  .about-text p{font-size:1rem;color:var(--ink2);line-height:1.8;margin-bottom:1.5rem;font-weight:400}
+  .about-text p strong{color:var(--ink)}
+  .aside-block{background:var(--card);border:1px solid var(--border);padding:1.5rem;margin-bottom:1rem;transition:border-color .2s}
+  .aside-block:hover{border-color:var(--accent)}
+  .aside-label{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+  .aside-value{font-weight:600;font-size:.95rem;color:var(--ink)}
+  .aside-sub{font-size:.82rem;color:var(--muted);margin-top:.25rem}
+  .cert-list{list-style:none}
+  .cert-list li{font-size:.85rem;color:var(--ink2);padding:.4rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
+  .cert-list li:last-child{border-bottom:none}
+  .cert-list li::before{content:'✓';font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent)}
+
+  /* CONTACT */
+  .contact-section{background:var(--surface);border-top:1px solid var(--border);position:relative;z-index:1}
+  .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+  .contact-headline{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1.5rem}
+  .contact-headline em{font-style:italic;color:var(--accent)}
+  .contact-sub{font-size:1rem;color:var(--ink2);line-height:1.7;margin-bottom:2.5rem}
+  .contact-links{display:flex;flex-direction:column;gap:0}
+  .contact-link{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:var(--card);border:1px solid var(--border);text-decoration:none;color:var(--ink);margin-top:-1px;transition:all .2s;position:relative}
+  .contact-link:hover{z-index:2;border-color:var(--accent);color:var(--accent);box-shadow:4px 4px 0 var(--accent);transform:translate(-2px,-2px)}
+  .contact-link-left{display:flex;align-items:center;gap:1rem}
+  .contact-link-icon{font-size:1.1rem}
+  .contact-link-label{font-weight:600;font-size:.9rem}
+  .contact-link-value{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--muted);margin-top:.15rem}
+  .contact-link-arrow{font-family:'DM Mono',monospace;font-size:.8rem;color:var(--muted)}
+
+  footer{border-top:1px solid var(--border);padding:1.75rem 4rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+  .footer-name{font-family:'DM Serif Display',serif;font-size:1rem;letter-spacing:-.01em}
+  .footer-copy{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.08em}
+
+  /* TOOLS */
+  .tools-section{background:var(--ink);color:var(--bg);position:relative;z-index:1}
+  .tools-section .section-label{color:rgba(245,242,235,.4)}
+  .tools-section .section-label::before{color:rgba(245,242,235,.25)}
+  .tools-section .section-title{color:var(--bg)}
+  .tools-section .section-title em{color:#6b9dfa}
+  .tools-marquee{overflow:hidden;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:1.2rem 0;margin-bottom:3rem}
+  .tools-track{display:flex;gap:3rem;animation:marquee 20s linear infinite;white-space:nowrap}
+  .tools-track span{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,242,235,.5);flex-shrink:0}
+  .tools-track span strong{color:rgba(245,242,235,.9)}
+  .tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+  .tool-item{background:var(--ink);padding:1.75rem;transition:background .2s;cursor:default}
+  .tool-item:hover{background:rgba(255,255,255,.05)}
+  .tool-name{font-weight:600;font-size:.95rem;color:#fff;margin-bottom:.3rem}
+  .tool-cat{font-family:'DM Mono',monospace;font-size:.62rem;color:rgba(245,242,235,.35);letter-spacing:.1em;text-transform:uppercase}
+  .tool-icon{font-size:1.5rem;margin-bottom:.75rem;display:block}
+
+  /* ANIMATIONS */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.6}}
+  @keyframes cellPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,65,.3)}50%{box-shadow:0 0 0 4px rgba(0,255,65,0)}}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-delay-1{transition-delay:.1s}
+  .reveal-delay-2{transition-delay:.2s}
+  .reveal-delay-3{transition-delay:.3s}
+
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem}.nav-links,.nav-badge{display:none}
+    .hero{grid-template-columns:1fr}.hero-left{padding:7rem 1.5rem 3rem;border-right:none;border-bottom:1px solid var(--border)}.hero-right{padding:2rem 1.5rem}
+    .container{padding:0 1.5rem}.section{padding:4rem 0}
+    .skills-grid,.tools-grid{grid-template-columns:1fr 1fr}
+    .about-grid,.contact-inner{grid-template-columns:1fr;gap:2.5rem}
+    .trivial-win-body{grid-template-columns:1fr}
+    footer{padding:1.5rem;flex-direction:column;gap:.5rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><strong>Antonio Oyuela</strong> · Técnico Informático</a>
+  <ul class="nav-links">
+    <li><a href="#competencias">Competencias</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <span class="nav-badge">Disponible</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Técnico Informático · España</p>
+    <h1 class="hero-name">Antonio<br><em>Oyuela</em><br>Sánchez</h1>
+    <p class="hero-role">Soporte Técnico &amp; Administración de Sistemas</p>
+    <p class="hero-desc">Especialista en resolución de incidencias técnicas, administración de sistemas y soporte a usuarios. Comprometido con mantener la infraestructura tecnológica funcionando de manera eficiente y segura.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">Contactar →</a>
+      <a href="#proyectos" class="btn btn-ghost">Ver proyectos</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="info-block">
+      <div class="info-block-label">Estado actual</div>
+      <div class="info-block-value"><span class="status-dot"></span>Disponible para nuevos proyectos</div>
+      <div class="info-block-sub">Abierto a oportunidades laborales en soporte IT y sistemas</div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">Especialización principal</div>
+      <div class="info-block-value">Soporte Técnico N1 / N2</div>
+      <div class="info-block-sub">Gestión de incidencias, troubleshooting y atención a usuarios finales</div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">También trabajo en</div>
+      <div class="info-block-value">Administración de Sistemas</div>
+      <div class="info-block-sub">Gestión de usuarios, configuración de equipos y mantenimiento de infraestructura</div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-label">Formación</div>
+      <div class="info-block-value">CFGM SMR + Cert. Profesionalidad Nv2 y Nv3</div>
+      <div class="info-block-sub">Sistemas Microinformáticos y Redes</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIAS -->
+<section id="competencias" class="section">
+  <div class="container">
+    <p class="section-label" data-num="01 —">Áreas de especialización</p>
+    <h2 class="section-title">Mis <em>competencias</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-icon">🖥️</span>
+        <h3 class="skill-card-title">Soporte Técnico</h3>
+        <p class="skill-card-desc">Atención y resolución de incidencias de hardware y software para usuarios finales. Diagnóstico remoto y presencial, gestión de tickets y escalado de problemas complejos.</p>
+        <div class="tags"><span class="tag">Helpdesk</span><span class="tag">Soporte N1/N2</span><span class="tag">Ticketing</span><span class="tag">Remoto</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">⚙️</span>
+        <h3 class="skill-card-title">Administración de Sistemas</h3>
+        <p class="skill-card-desc">Gestión de usuarios y permisos en Active Directory, administración de servidores Windows Server, monitorización de sistemas y aplicación de políticas de grupo (GPO).</p>
+        <div class="tags"><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">GPO</span><span class="tag">DNS/DHCP</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">🌐</span>
+        <h3 class="skill-card-title">Redes y Conectividad</h3>
+        <p class="skill-card-desc">Configuración y diagnóstico de redes LAN/WAN, gestión de switches y routers, resolución de problemas de conectividad y análisis de tráfico con Wireshark.</p>
+        <div class="tags"><span class="tag">TCP/IP</span><span class="tag">Wireshark</span><span class="tag">VPN</span><span class="tag">Wi-Fi</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-icon">🔒</span>
+        <h3 class="skill-card-title">Seguridad Básica</h3>
+        <p class="skill-card-desc">Aplicación de buenas prácticas de seguridad, gestión de antivirus, copias de seguridad y concienciación de usuarios sobre amenazas comunes.</p>
+        <div class="tags"><span class="tag">Antivirus</span><span class="tag">Backup</span><span class="tag">Firewall</span><span class="tag">Phishing</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <span class="skill-icon">🖨️</span>
+        <h3 class="skill-card-title">Hardware &amp; Mantenimiento</h3>
+        <p class="skill-card-desc">Montaje, configuración y reparación de equipos de sobremesa y portátiles. Gestión de impresoras, periféricos y control de inventario de activos IT.</p>
+        <div class="tags"><span class="tag">PCs</span><span class="tag">Portátiles</span><span class="tag">Impresoras</span><span class="tag">Inventario</span></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <span class="skill-icon">☁️</span>
+        <h3 class="skill-card-title">Entornos en la Nube</h3>
+        <p class="skill-card-desc">Administración básica de Microsoft 365, gestión de cuentas y licencias, soporte en entornos híbridos y migración de datos.</p>
+        <div class="tags"><span class="tag">Microsoft 365</span><span class="tag">Azure AD</span><span class="tag">OneDrive</span><span class="tag">Teams</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS INTERACTIVOS -->
+<section id="proyectos" class="section" style="background:var(--surface)">
+  <div class="container">
+    <p class="section-label" data-num="02 —">Demostraciones interactivas</p>
+    <h2 class="section-title">Herramientas que <em>domino</em></h2>
+    <p style="color:var(--muted);font-size:.9rem;margin-top:-2.5rem;margin-bottom:2.5rem;max-width:560px">Prueba estas simulaciones en directo — son las mismas herramientas que uso en mi día a día como técnico.</p>
+
+    <div class="projects-tabs">
+      <button class="proj-tab active" onclick="showTab('wireshark',this)">🦈 Wireshark</button>
+      <button class="proj-tab" onclick="showTab('traceroute',this)">🗺️ Traceroute</button>
+      <button class="proj-tab" onclick="showTab('terminal',this)">⬛ CMD</button>
+      <button class="proj-tab" onclick="showTab('trivial',this)">🎮 Trivial de Comandos</button>
+      <button class="proj-tab" onclick="showTab('linux',this)">🐧 Terminal Linux</button>
+      <button class="proj-tab" onclick="showTab('opensource',this)">🔓 Open Source</button>
+    </div>
+
+    <!-- ═══ WIRESHARK ═══ -->
+    <div id="panel-wireshark" class="proj-panel active">
+      <div class="win-chrome">
+        <div class="win-titlebar">
+          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
+          <span class="win-title">Wireshark — captura en vivo (simulación)</span>
+        </div>
+        <div class="ws-toolbar">
+          <button class="ws-btn" id="ws-capture-btn" onclick="toggleCapture()">▶ Iniciar captura</button>
+          <button class="ws-btn" onclick="clearCapture()">🗑 Limpiar</button>
+          <button class="ws-btn" onclick="exportCapture()">💾 Exportar</button>
+          <input class="ws-filter" id="ws-filter" placeholder="Filtro: tcp, udp, http, dns, ip.addr==192.168.1.1 ..." oninput="applyFilter()">
+          <button class="ws-btn" onclick="applyFilter()">Aplicar</button>
+        </div>
+        <div class="ws-scroll" id="ws-scroll">
+          <table class="ws-table">
+            <thead>
+              <tr>
+                <th onclick="sortTable('proto')">Proto ▸</th>
+                <th onclick="sortTable('time')">Tiempo ▸</th>
+                <th onclick="sortTable('src')">Origen ▸</th>
+                <th onclick="sortTable('dst')">Destino ▸</th>
+                <th onclick="sortTable('len')">Long. ▸</th>
+                <th>Info</th>
+              </tr>
+            </thead>
+            <tbody id="ws-body"></tbody>
+          </table>
+        </div>
+        <div class="ws-detail" id="ws-detail">
+          <span style="color:var(--muted);font-size:.7rem">▸ Haz clic en un paquete para ver sus detalles</span>
+        </div>
+        <div class="ws-statusbar">
+          <span>Paquetes: <span id="ws-count">0</span></span>
+          <span>Mostrados: <span id="ws-shown">0</span></span>
+          <span>Capturando: <span id="ws-status">No</span></span>
+          <span style="margin-left:auto;color:var(--accent)">Interfaz: eth0 · 1 Gbps</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TRACEROUTE ═══ -->
+    <div id="panel-traceroute" class="proj-panel">
+      <div class="win-chrome">
+        <div class="win-titlebar">
+          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
+          <span class="win-title">tracert — Trazado de rutas de red</span>
+        </div>
+        <div class="tr-body">
+          <div class="tr-prompt" id="tr-prompt">C:\Users\Antonio&gt; tracert google.com</div>
+          <div class="tr-output" id="tr-output"></div>
+        </div>
+        <div class="tr-controls">
+          <input class="tr-input" id="tr-input" value="google.com" placeholder="Introduce un dominio o IP...">
+          <button class="tr-run-btn" id="tr-btn" onclick="runTraceroute()">▶ Ejecutar</button>
+        </div>
+        <div class="tr-legend">
+          <span><span class="dot-green"></span> &lt;30ms — Excelente</span>
+          <span><span class="dot-red"></span> &gt;100ms — Latencia alta</span>
+          <span><span class="dot-gray"></span> * * * — Sin respuesta</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TERMINAL CMD ═══ -->
+    <div id="panel-terminal" class="proj-panel">
+      <div class="win-chrome">
+        <div class="win-titlebar" style="background:#1e1e1e;border-bottom:1px solid #333">
+          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
+          <span class="win-title" style="color:#888">Símbolo del sistema — C:\Users\Antonio</span>
+        </div>
+        <div class="cmd-body">
+          <div class="cmd-output" id="cmd-output"></div>
+          <div class="cmd-input-row">
+            <span class="cmd-input-prompt" id="cmd-prompt-label">C:\Users\Antonio&gt;</span>
+            <input class="cmd-input" id="cmd-input" placeholder="escribe un comando..." autocomplete="off" autocorrect="off" spellcheck="false">
+          </div>
+        </div>
+        <div class="cmd-hint">Prueba: ipconfig · ping 8.8.8.8 · netstat · nslookup · tracert · arp -a · cls · help</div>
+      </div>
+    </div>
+
+    <!-- ═══ TRIVIAL ═══ -->
+    <div id="panel-trivial" class="proj-panel">
+      <div class="win-chrome trivial-wrap">
+        <div class="win-titlebar" style="background:#111;border-bottom:1px solid #1e1e1e">
+          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
+          <span class="win-title" style="color:#555">CMD Quest — Trivial de Comandos Windows</span>
+          <span style="margin-left:auto;font-family:'DM Mono',monospace;font-size:.6rem;color:#444">v1.0 · nivel <span id="tv-level-label">1</span></span>
+        </div>
+        <div class="trivial-win-body">
+          <div class="trivial-left">
+            <div class="trivial-screen">
+              <div class="tq-label">Pregunta <span id="tq-num">1</span> / <span id="tq-total">15</span></div>
+              <div class="tq-text" id="tq-text">Cargando...</div>
+              <div class="tq-hint" id="tq-hint"></div>
+            </div>
+            <div class="trivial-answers" id="tq-answers"></div>
+            <div class="trivial-cmd-input-row">
+              <input class="trivial-cmd-field" id="tv-cmd-input" placeholder="Escribe el comando exacto aquí..." autocomplete="off" spellcheck="false">
+              <button class="trivial-cmd-btn" onclick="checkTrivialInput()">ENTER ↵</button>
+            </div>
+            <button class="trivial-next-btn" id="tv-next-btn" onclick="nextTrivialQ()">Siguiente pregunta →</button>
+          </div>
+          <div class="trivial-right">
+            <div class="trivial-stats">
+              <div class="ts-row"><span class="ts-label">Nivel</span><span class="ts-val" id="tv-level">1</span></div>
+              <div class="ts-row"><span class="ts-label">Puntos</span><span class="ts-val good" id="tv-score">0</span></div>
+              <div class="ts-row"><span class="ts-label">Correctas</span><span class="ts-val good" id="tv-correct">0</span></div>
+              <div class="ts-row"><span class="ts-label">Falladas</span><span class="ts-val bad" id="tv-wrong">0</span></div>
+              <div class="ts-row"><span class="ts-label">Racha</span><span class="ts-val" id="tv-streak">0 🔥</span></div>
+              <div class="ts-progress"><div class="ts-bar" id="tv-progress" style="width:0%"></div></div>
+            </div>
+            <div class="trivial-map">
+              <div class="tmap-label">Mapa de progreso</div>
+              <div class="tmap-grid" id="tv-map"></div>
+            </div>
+            <div class="trivial-log">
+              <div class="log-label">Registro</div>
+              <div id="tv-log"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- ═══ LINUX ═══ -->
+    <div id="panel-linux" class="proj-panel">
+      <div class="win-chrome">
+        <div class="win-titlebar" style="background:#300a24;border-bottom:1px solid #5a1a44">
+          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
+          <span class="win-title" style="color:#cc69a0">antonio@ubuntu: ~</span>
+        </div>
+        <div class="cmd-body" style="background:#300a24;min-height:360px">
+          <div class="cmd-output" id="lx-output" style="max-height:300px"></div>
+          <div class="cmd-input-row" style="border-top:1px solid #5a1a44">
+            <span class="cmd-input-prompt" id="lx-prompt-label" style="color:#4ec9b0">antonio@ubuntu:<span style="color:#569cd6" id="lx-path-span">~</span>$</span>
+            <input class="cmd-input" id="lx-input" placeholder="escribe un comando Linux..." autocomplete="off" autocorrect="off" spellcheck="false">
+          </div>
+        </div>
+        <div class="cmd-hint">Prueba: ls · pwd · cd /etc · cat /etc/os-release · ip a · ifconfig · netstat -tulnp · ps aux · top · uname -a · df -h · free -h · who · grep · find · chmod · sudo · apt · help</div>
+      </div>
+    </div>
+
+    <!-- ═══ OPEN SOURCE ═══ -->
+    <div id="panel-opensource" class="proj-panel">
+      <div class="win-chrome">
+        <div class="win-titlebar">
+          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
+          <span class="win-title">Herramientas Open Source — Kit del Técnico Informático</span>
+          <div style="margin-left:auto;display:flex;gap:.5rem">
+            <button class="os-filter-btn active" onclick="filterOS('all',this)">Todas</button>
+            <button class="os-filter-btn" onclick="filterOS('red',this)">Seguridad</button>
+            <button class="os-filter-btn" onclick="filterOS('blue',this)">Infraestructura</button>
+            <button class="os-filter-btn" onclick="filterOS('green',this)">Servicios</button>
+            <button class="os-filter-btn" onclick="filterOS('purple',this)">Monitorización</button>
+          </div>
+        </div>
+
+        <!-- NMAP INTERACTIVE GUI -->
+        <div id="nmap-gui" style="display:none;border-bottom:1px solid var(--border)">
+          <div style="display:grid;grid-template-columns:260px 1fr;min-height:440px">
+            <!-- LEFT PANEL -->
+            <div style="background:#1a1a2e;padding:1rem;border-right:1px solid #0f3460;display:flex;flex-direction:column;gap:.75rem">
+              <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:#e94560;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.25rem">🔍 Zenmap — Nmap GUI</div>
+              <div>
+                <label style="font-family:'DM Mono',monospace;font-size:.62rem;color:#888;display:block;margin-bottom:.3rem">Objetivo</label>
+                <input id="nmap-target" value="192.168.1.0/24" style="width:100%;background:#0f3460;border:1px solid #16213e;color:#e0e0e0;font-family:'DM Mono',monospace;font-size:.72rem;padding:.4rem .6rem;outline:none">
+              </div>
+              <div>
+                <label style="font-family:'DM Mono',monospace;font-size:.62rem;color:#888;display:block;margin-bottom:.3rem">Perfil de escaneo</label>
+                <select id="nmap-profile" style="width:100%;background:#0f3460;border:1px solid #16213e;color:#e0e0e0;font-family:'DM Mono',monospace;font-size:.72rem;padding:.4rem;outline:none">
+                  <option value="ping">Ping Scan (-sn)</option>
+                  <option value="quick" selected>Escaneo rápido (-T4 -F)</option>
+                  <option value="regular">Escaneo regular (-sV)</option>
+                  <option value="intense">Escaneo intenso (-T4 -A)</option>
+                  <option value="udp">Escaneo UDP (-sU)</option>
+                  <option value="vuln">Vulnerabilidades (--script vuln)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-family:'DM Mono',monospace;font-size:.62rem;color:#888;display:block;margin-bottom:.3rem">Comando generado</label>
+                <div id="nmap-cmd-preview" style="background:#0a0a1a;border:1px solid #16213e;color:#e94560;font-family:'DM Mono',monospace;font-size:.65rem;padding:.5rem;line-height:1.4;min-height:40px;word-break:break-all">nmap -T4 -F 192.168.1.0/24</div>
+              </div>
+              <button id="nmap-scan-btn" onclick="runNmapScan()" style="background:#e94560;border:none;color:#fff;font-family:'DM Mono',monospace;font-size:.72rem;padding:.6rem;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;margin-top:auto">▶ ESCANEAR</button>
+              <div id="nmap-progress-wrap" style="display:none">
+                <div style="font-family:'DM Mono',monospace;font-size:.6rem;color:#888;margin-bottom:.3rem">Progreso</div>
+                <div style="background:#0a0a1a;height:6px;border-radius:3px;overflow:hidden">
+                  <div id="nmap-progress-bar" style="height:100%;background:#e94560;width:0%;transition:width .3s;border-radius:3px"></div>
+                </div>
+                <div id="nmap-progress-label" style="font-family:'DM Mono',monospace;font-size:.6rem;color:#e94560;margin-top:.3rem">Iniciando...</div>
+              </div>
+              <!-- Host list -->
+              <div>
+                <div style="font-family:'DM Mono',monospace;font-size:.6rem;color:#888;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">Hosts encontrados</div>
+                <div id="nmap-host-list" style="display:flex;flex-direction:column;gap:.3rem;max-height:120px;overflow-y:auto"></div>
+              </div>
+            </div>
+            <!-- RIGHT PANEL: TABS -->
+            <div style="background:#0d0d1a;display:block">
+              <div style="display:flex;border-bottom:1px solid #0f3460">
+                <button class="nmap-tab-btn active" onclick="switchNmapTab('output',this)" style="font-family:'DM Mono',monospace;font-size:.65rem;padding:.5rem 1rem;background:transparent;border:none;color:#e94560;cursor:pointer;border-bottom:2px solid #e94560;letter-spacing:.08em">Salida Nmap</button>
+                <button class="nmap-tab-btn" onclick="switchNmapTab('ports',this)" style="font-family:'DM Mono',monospace;font-size:.65rem;padding:.5rem 1rem;background:transparent;border:none;color:#555;cursor:pointer;letter-spacing:.08em">Puertos/Hosts</button>
+                <button class="nmap-tab-btn" onclick="switchNmapTab('topology',this)" style="font-family:'DM Mono',monospace;font-size:.65rem;padding:.5rem 1rem;background:transparent;border:none;color:#555;cursor:pointer;letter-spacing:.08em">Topología</button>
+                <button class="nmap-tab-btn" onclick="switchNmapTab('hostdetail',this)" style="font-family:'DM Mono',monospace;font-size:.65rem;padding:.5rem 1rem;background:transparent;border:none;color:#555;cursor:pointer;letter-spacing:.08em">Detalles Host</button>
+              </div>
+              <div id="nmap-tab-output" class="nmap-tab-content" style="display:block;overflow-y:auto;padding:.75rem;font-family:'DM Mono',monospace;font-size:.7rem;color:#ccc;line-height:1.7;max-height:380px">
+                <div style="color:#555;font-family:'DM Mono',monospace;font-size:.7rem;padding:.5rem">Configura un objetivo y pulsa ESCANEAR para comenzar...</div>
+              </div>
+              <div id="nmap-tab-ports" class="nmap-tab-content" style="display:none;overflow-y:auto;max-height:380px">
+                <table style="width:100%;border-collapse:collapse;font-family:'DM Mono',monospace;font-size:.68rem" id="nmap-ports-table">
+                  <thead><tr style="background:#0f3460"><th style="padding:.4rem .75rem;text-align:left;color:#888;font-weight:400">Host</th><th style="padding:.4rem .75rem;text-align:left;color:#888;font-weight:400">Puerto</th><th style="padding:.4rem .75rem;text-align:left;color:#888;font-weight:400">Estado</th><th style="padding:.4rem .75rem;text-align:left;color:#888;font-weight:400">Servicio</th><th style="padding:.4rem .75rem;text-align:left;color:#888;font-weight:400">Versión</th></tr></thead>
+                  <tbody id="nmap-ports-body"><tr id="nmap-no-data-row"><td colspan="5" style="padding:.75rem;color:#555;text-align:center;font-family:'DM Mono',monospace;font-size:.68rem">Sin datos — ejecuta un escaneo primero</td></tr></tbody>
+                </table>
+              </div>
+              <div id="nmap-tab-topology" class="nmap-tab-content" style="display:none;position:relative;max-height:380px">
+                <canvas id="nmap-topology-canvas" style="width:100%;height:380px"></canvas>
+              </div>
+              <div id="nmap-tab-hostdetail" class="nmap-tab-content" style="display:none;overflow-y:auto;padding:1rem;max-height:380px">
+                <div id="nmap-host-detail-content" style="font-family:'DM Mono',monospace;font-size:.7rem;color:#ccc;line-height:1.8">
+                  <span style="color:#555">Selecciona un host de la lista izquierda...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOLS GRID -->
+        <div style="padding:1.25rem;background:var(--surface)">
+          <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem" id="os-count-label">Mostrando todas las herramientas</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;max-height:500px;overflow-y:auto" id="os-grid"></div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- HERRAMIENTAS -->
+<section class="section tools-section">
+  <div class="container">
+    <p class="section-label" data-num="03 —">Stack tecnológico</p>
+    <h2 class="section-title">Herramientas y <em>tecnologías</em></h2>
+    <div class="tools-marquee">
+      <div class="tools-track">
+        <span><strong>Windows Server</strong></span><span>·</span><span><strong>Active Directory</strong></span><span>·</span><span><strong>Microsoft 365</strong></span><span>·</span><span><strong>GLPI</strong></span><span>·</span><span><strong>Veeam Backup</strong></span><span>·</span><span><strong>VMware</strong></span><span>·</span><span><strong>PowerShell</strong></span><span>·</span><span><strong>Wireshark</strong></span><span>·</span><span><strong>TeamViewer</strong></span><span>·</span>
+        <span><strong>Windows Server</strong></span><span>·</span><span><strong>Active Directory</strong></span><span>·</span><span><strong>Microsoft 365</strong></span><span>·</span><span><strong>GLPI</strong></span><span>·</span><span><strong>Veeam Backup</strong></span><span>·</span><span><strong>VMware</strong></span><span>·</span><span><strong>PowerShell</strong></span><span>·</span><span><strong>Wireshark</strong></span><span>·</span><span><strong>TeamViewer</strong></span><span>·</span>
+      </div>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-item reveal"><span class="tool-icon">🪟</span><div class="tool-name">Windows Server</div><div class="tool-cat">Sistemas operativos</div></div>
+      <div class="tool-item reveal reveal-delay-1"><span class="tool-icon">📁</span><div class="tool-name">Active Directory</div><div class="tool-cat">Gestión de usuarios</div></div>
+      <div class="tool-item reveal reveal-delay-2"><span class="tool-icon">☁️</span><div class="tool-name">Microsoft 365</div><div class="tool-cat">Productividad cloud</div></div>
+      <div class="tool-item reveal reveal-delay-3"><span class="tool-icon">🦈</span><div class="tool-name">Wireshark</div><div class="tool-cat">Análisis de red</div></div>
+      <div class="tool-item reveal"><span class="tool-icon">💾</span><div class="tool-name">Veeam Backup</div><div class="tool-cat">Copias de seguridad</div></div>
+      <div class="tool-item reveal reveal-delay-1"><span class="tool-icon">🖥️</span><div class="tool-name">VMware / Hyper-V</div><div class="tool-cat">Virtualización</div></div>
+      <div class="tool-item reveal reveal-delay-2"><span class="tool-icon">⚡</span><div class="tool-name">PowerShell</div><div class="tool-cat">Automatización</div></div>
+      <div class="tool-item reveal reveal-delay-3"><span class="tool-icon">🔧</span><div class="tool-name">TeamViewer / AnyDesk</div><div class="tool-cat">Soporte remoto</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi" class="section">
+  <div class="container">
+    <p class="section-label" data-num="04 —">Perfil profesional</p>
+    <h2 class="section-title">Sobre <em>mí</em></h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Soy <strong>Antonio Oyuela Sánchez</strong>, Técnico Informático con Grado Medio en Sistemas Microinformáticos y Redes (SMR) y Certificados de Profesionalidad de nivel 2 y 3 en informática. Me apasiona resolver problemas técnicos y ayudar a las personas a sacar el máximo partido a la tecnología.</p>
+        <p>Mi enfoque principal es el <strong>soporte técnico de calidad</strong>: escuchar al usuario, diagnosticar el problema con precisión y resolverlo de forma rápida y eficaz, dejando siempre al usuario con una explicación clara de lo sucedido.</p>
+        <p>Igualmente disfruto de las tareas de <strong>administración de sistemas</strong>: configurar servidores, mantener la infraestructura en perfecto estado y automatizar tareas repetitivas para que el departamento IT sea más eficiente.</p>
+      </div>
+      <div class="about-aside reveal reveal-delay-1">
+        <div class="aside-block">
+          <div class="aside-label">Formación</div>
+          <div class="aside-value">CFGM Sistemas Microinformáticos y Redes</div>
+          <div class="aside-sub">Técnico en SMR · Grado Medio</div>
+        </div>
+        <div class="aside-block">
+          <div class="aside-label">Idiomas</div>
+          <div class="aside-value">Español (nativo) · Inglés técnico (A1)</div>
+        </div>
+        <div class="aside-block">
+          <div class="aside-label">Certificados de Profesionalidad</div>
+          <ul class="cert-list">
+            <li>Nivel 2 — Operación de Sistemas Informáticos</li>
+            <li>Nivel 2 — Montaje y Reparación de Sistemas Microinformáticos</li>
+            <li>Nivel 2 — Operación de Sistemas de Voz y Datos</li>
+            <li>Nivel 3 — Seguridad Informática | 90 Horas</li>
+            <li>Nivel 2 — Operación de Redes Departamentales</li>
+            <li>Nivel 2 — Sistemas Microinformáticos</li>
+            <li>Nivel 2 — Operación de Sistemas Informáticos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section contact-section">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="reveal">
+        <p class="section-label" data-num="05 —">Hablemos</p>
+        <h2 class="contact-headline">¿Tienes un<br>proyecto o<br><em>necesitas ayuda</em>?</h2>
+        <p class="contact-sub">Estoy disponible para nuevas oportunidades laborales, proyectos de soporte IT o consultas técnicas. No dudes en escribirme.</p>
+        <a href="mailto:antonio.oyuela@email.com" class="btn btn-primary">Enviar mensaje →</a>
+      </div>
+      <div class="contact-links reveal reveal-delay-1">
+        <a href="mailto:antonio.oyuela@email.com" class="contact-link">
+          <div class="contact-link-left"><span class="contact-link-icon">✉️</span><div><div class="contact-link-label">Email</div><div class="contact-link-value">antonio.oyuela@email.com</div></div></div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="#" class="contact-link">
+          <div class="contact-link-left"><span class="contact-link-icon">💼</span><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/antonio-oyuela</div></div></div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+        <a href="#" class="contact-link">
+          <div class="contact-link-left"><span class="contact-link-icon">📄</span><div><div class="contact-link-label">Curriculum Vitae</div><div class="contact-link-value">Descargar PDF</div></div></div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Antonio Oyuela Sánchez</div>
+  <div class="footer-copy">© 2026 · Técnico Informático · España</div>
+</footer>
+
+<script>
+// ═══════════════════════════════════
+// TABS
+// ═══════════════════════════════════
+function showTab(id, btn) {
+  document.querySelectorAll('.proj-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='terminal' && !cmdInit) initTerminal();
+  if(id==='trivial' && !trivialInit) initTrivial();
+  if(id==='linux' && !linuxInit) initLinux();
+  if(id==='opensource') { if(!osInit) initOpenSource(); }
+}
+
+// ═══════════════════════════════════
+// WIRESHARK
+// ═══════════════════════════════════
+let capturing = false, captureInterval = null;
+let allPackets = [], packetId = 1;
+
+const protocols = [
+  {proto:'TCP',  cls:'proto-tcp',  color:'#1a4fd6'},
+  {proto:'UDP',  cls:'proto-udp',  color:'#16a34a'},
+  {proto:'DNS',  cls:'proto-dns',  color:'#d64a1a'},
+  {proto:'HTTP', cls:'proto-http', color:'#7c3aed'},
+  {proto:'ICMP', cls:'proto-icmp', color:'#0891b2'},
+  {proto:'TLS',  cls:'proto-tcp',  color:'#1a4fd6'},
+  {proto:'ARP',  cls:'proto-udp',  color:'#16a34a'},
+];
+
+const infos = {
+  TCP:  ['SYN → 192.168.1.1:80','ACK ← Seq=1 Ack=1','FIN-ACK Conexión cerrada','[PSH,ACK] Data transfer','[RST] Reset conexión'],
+  UDP:  ['DHCP Request (broadcast)','DHCP Offer 192.168.1.45','SSDP M-SEARCH * HTTP/1.1','NTP req → pool.ntp.org'],
+  DNS:  ['Query A google.com','Response: 142.250.185.46','Query AAAA cloudflare.com','Response NXDOMAIN'],
+  HTTP: ['GET /index.html HTTP/1.1','200 OK text/html 4.2KB','POST /api/login 302 Found','304 Not Modified'],
+  ICMP: ['Echo request  id=0x1 seq=1','Echo reply    ttl=55 time=12ms','Dest unreachable','Time exceeded TTL'],
+  TLS:  ['Client Hello TLS 1.3','Server Hello + Certificate','Application Data (encrypted)','Finished handshake'],
+  ARP:  ['Who has 192.168.1.1?','192.168.1.1 is at aa:bb:cc:dd','Gratuitous ARP reply'],
+};
+
+function rndIp() {
+  const nets = ['192.168.1','10.0.0','172.16.0'];
+  return nets[Math.floor(Math.random()*nets.length)] + '.' + (Math.floor(Math.random()*254)+1);
+}
+function rndTime() {
+  return (Math.random()*1.5).toFixed(6);
+}
+
+function genPacket() {
+  const p = protocols[Math.floor(Math.random()*protocols.length)];
+  const info_arr = infos[p.proto] || ['Data'];
+  return {
+    id: packetId++,
+    proto: p.proto, cls: p.cls,
+    time: rndTime(),
+    src: rndIp() + (p.proto==='HTTP'||p.proto==='TLS' ? ':'+[80,443,8080][Math.floor(Math.random()*3)] : ''),
+    dst: rndIp() + (p.proto==='HTTP'||p.proto==='TLS' ? ':'+[80,443][Math.floor(Math.random()*2)] : ''),
+    len: Math.floor(Math.random()*1400)+40,
+    info: info_arr[Math.floor(Math.random()*info_arr.length)],
+  };
+}
+
+function addPacketRow(pkt) {
+  const tbody = document.getElementById('ws-body');
+  const tr = document.createElement('tr');
+  tr.className = pkt.cls;
+  tr.dataset.id = pkt.id;
+  tr.innerHTML = `<td>${pkt.proto}</td><td>${pkt.time}</td><td>${pkt.src}</td><td>${pkt.dst}</td><td>${pkt.len}</td><td>${pkt.info}</td>`;
+  tr.onclick = () => showDetail(pkt, tr);
+  tbody.appendChild(tr);
+  // keep max 120 rows
+  while(tbody.rows.length > 120) tbody.deleteRow(0);
+  const scroll = document.getElementById('ws-scroll');
+  scroll.scrollTop = scroll.scrollHeight;
+}
+
+function showDetail(pkt, row) {
+  document.querySelectorAll('#ws-body tr').forEach(r => r.classList.remove('selected'));
+  row.classList.add('selected');
+  const d = document.getElementById('ws-detail');
+  d.innerHTML = `
+    <ul class="ws-detail-tree">
+      <li onclick="toggleTree(this)">Frame ${pkt.id}: ${pkt.len} bytes capturados
+        <ul class="ws-detail-sub">
+          <li>Tiempo de llegada: ${pkt.time} s</li>
+          <li>Protocolo: ${pkt.proto}</li>
+        </ul>
+      </li>
+      <li onclick="toggleTree(this)">Ethernet II — src: aa:bb:cc:dd:ee:ff → dst: ff:ff:ff:ff:ff:ff
+        <ul class="ws-detail-sub">
+          <li>Tipo: IPv4 (0x0800)</li>
+        </ul>
+      </li>
+      <li onclick="toggleTree(this)">IP — src: ${pkt.src.split(':')[0]} → dst: ${pkt.dst.split(':')[0]}
+        <ul class="ws-detail-sub">
+          <li>TTL: ${Math.floor(Math.random()*128+64)}</li>
+          <li>Longitud total: ${pkt.len}</li>
+          <li>Protocolo: ${pkt.proto}</li>
+        </ul>
+      </li>
+      <li onclick="toggleTree(this)">${pkt.proto} — ${pkt.info}
+        <ul class="ws-detail-sub">
+          <li>Src port: ${Math.floor(Math.random()*60000+1024)}</li>
+          <li>Dst port: ${pkt.dst.includes(':') ? pkt.dst.split(':')[1] : Math.floor(Math.random()*1000)}</li>
+          <li>Checksum: 0x${Math.floor(Math.random()*65535).toString(16).padStart(4,'0')}</li>
+        </ul>
+      </li>
+    </ul>`;
+}
+
+function toggleTree(el) {
+  el.classList.toggle('open');
+  const sub = el.querySelector('.ws-detail-sub');
+  if(sub) sub.classList.toggle('open');
+}
+
+function toggleCapture() {
+  capturing = !capturing;
+  const btn = document.getElementById('ws-capture-btn');
+  const status = document.getElementById('ws-status');
+  if(capturing) {
+    btn.textContent = '⏹ Detener captura';
+    btn.classList.add('capturing');
+    status.textContent = 'Sí';
+    captureInterval = setInterval(() => {
+      const pkt = genPacket();
+      allPackets.push(pkt);
+      updateCount();
+      const filter = document.getElementById('ws-filter').value.trim().toLowerCase();
+      if(matchFilter(pkt, filter)) { addPacketRow(pkt); updateShown(); }
+    }, 300 + Math.random()*400);
+  } else {
+    btn.textContent = '▶ Iniciar captura';
+    btn.classList.remove('capturing');
+    status.textContent = 'No';
+    clearInterval(captureInterval);
+  }
+}
+
+function matchFilter(pkt, filter) {
+  if(!filter) return true;
+  if(filter==='tcp') return pkt.proto==='TCP'||pkt.proto==='TLS';
+  if(filter==='udp') return pkt.proto==='UDP';
+  if(filter==='dns') return pkt.proto==='DNS';
+  if(filter==='http') return pkt.proto==='HTTP';
+  if(filter==='icmp') return pkt.proto==='ICMP';
+  if(filter==='arp') return pkt.proto==='ARP';
+  if(filter==='tls') return pkt.proto==='TLS';
+  if(filter.startsWith('ip.addr==')) {
+    const ip = filter.split('==')[1];
+    return pkt.src.includes(ip)||pkt.dst.includes(ip);
+  }
+  if(filter.startsWith('ip.src==')) return pkt.src.includes(filter.split('==')[1]);
+  if(filter.startsWith('ip.dst==')) return pkt.dst.includes(filter.split('==')[1]);
+  return pkt.proto.toLowerCase().includes(filter)||pkt.info.toLowerCase().includes(filter)||pkt.src.includes(filter)||pkt.dst.includes(filter);
+}
+
+function applyFilter() {
+  const filter = document.getElementById('ws-filter').value.trim().toLowerCase();
+  const field = document.getElementById('ws-filter');
+  const tbody = document.getElementById('ws-body');
+  tbody.innerHTML = '';
+  const validFilters = ['tcp','udp','dns','http','icmp','arp','tls','','ip.addr==','ip.src==','ip.dst=='];
+  const isValid = !filter || validFilters.some(f => filter.startsWith(f));
+  field.className = 'ws-filter ' + (filter ? (isValid ? 'valid' : 'invalid') : '');
+  allPackets.filter(p => matchFilter(p, filter)).forEach(p => addPacketRow(p));
+  updateShown();
+}
+
+function clearCapture() {
+  allPackets = [];
+  document.getElementById('ws-body').innerHTML = '';
+  document.getElementById('ws-detail').innerHTML = '<span style="color:var(--muted);font-size:.7rem">▸ Haz clic en un paquete para ver sus detalles</span>';
+  updateCount(); updateShown();
+}
+function exportCapture() { alert('En una captura real se exportaría como archivo .pcap\nPaquetes capturados: ' + allPackets.length); }
+function updateCount() { document.getElementById('ws-count').textContent = allPackets.length; }
+function updateShown() { document.getElementById('ws-shown').textContent = document.getElementById('ws-body').rows.length; }
+
+// ═══════════════════════════════════
+// TRACEROUTE
+// ═══════════════════════════════════
+const trRoutes = {
+  'google.com':     [{ip:'192.168.1.1',host:'router.local',ms:[1,2,1]},{ip:'10.0.0.1',host:'isp-gateway.net',ms:[8,9,8]},{ip:'213.0.10.1',host:'movistar-backbone.es',ms:[15,14,16]},{ip:'72.14.202.1',host:'google-peering.net',ms:[18,17,19]},{ip:'108.170.246.1',host:'google-bb.net',ms:[20,21,20]},{ip:'142.250.185.46',host:'mad07s09-in-f14.1e100.net',ms:[22,21,23]}],
+  '8.8.8.8':        [{ip:'192.168.1.1',host:'router.local',ms:[1,1,2]},{ip:'10.0.0.1',host:'isp-gw.net',ms:[7,8,7]},{ip:'213.0.10.5',host:'movistar.es',ms:[13,13,14]},{ip:'8.8.8.8',host:'dns.google',ms:[19,19,20]}],
+  'cloudflare.com': [{ip:'192.168.1.1',host:'router.local',ms:[1,1,1]},{ip:'10.0.0.1',host:'isp-gw.net',ms:[6,7,6]},{ip:'185.176.24.1',host:'cf-backbone.net',ms:[11,12,11]},{ip:'104.16.133.229',host:'cloudflare.com',ms:[14,13,14]}],
+  'default':        [{ip:'192.168.1.1',host:'router.local',ms:[1,2,1]},{ip:'10.0.0.1',host:'isp-gw.net',ms:[8,9,9]},{ip:'213.0.10.1',host:'backbone.es',ms:[14,15,14]},{ip:'*',host:'*',ms:['*','*','*']},{ip:'1.2.3.4',host:'destino.net',ms:[30,31,30]}],
+};
+
+function runTraceroute() {
+  const host = document.getElementById('tr-input').value.trim() || 'google.com';
+  const btn = document.getElementById('tr-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Ejecutando...';
+  document.getElementById('tr-prompt').textContent = `C:\\Users\\Antonio> tracert ${host}`;
+  const out = document.getElementById('tr-output');
+  out.innerHTML = `<div style="color:#8b949e;margin-bottom:.5rem">Determinando la ruta a ${host} con un máximo de 30 saltos:</div>`;
+  const hops = trRoutes[host] || trRoutes['default'];
+  let i = 0;
+  function nextHop() {
+    if(i >= hops.length) {
+      out.innerHTML += `<div style="color:#8b949e;margin-top:.5rem">Seguimiento de ruta completo.</div>`;
+      btn.disabled = false; btn.textContent = '▶ Ejecutar';
+      return;
+    }
+    const hop = hops[i]; i++;
+    const avgMs = hop.ms[0]==='*' ? null : hop.ms.reduce((a,b)=>a+b,0)/hop.ms.length;
+    const isTimeout = hop.ip==='*';
+    const div = document.createElement('div');
+    div.className = 'tr-hop';
+    const barWidth = avgMs ? Math.min((avgMs/150)*100,100) : 0;
+    const msColor = avgMs ? (avgMs>80?'high':'') : 'timeout';
+    div.innerHTML = `
+      <span class="tr-hop-num">${i}</span>
+      <span class="tr-hop-ip ${isTimeout?'tr-hop-ms timeout':''}">${isTimeout?'*  *  *':hop.ip}</span>
+      ${hop.ms.map(m=>`<span class="tr-hop-ms ${m==='*'?'timeout':avgMs>80?'high':''}">${m==='*'?'*':m+' ms'}</span>`).join('')}
+      <span class="tr-hop-host">${isTimeout?'Sin respuesta':hop.host}</span>
+    `;
+    out.appendChild(div);
+    setTimeout(()=>div.classList.add('visible'),50);
+    out.parentElement.scrollTop = out.parentElement.scrollHeight;
+    setTimeout(nextHop, 600 + Math.random()*400);
+  }
+  setTimeout(nextHop, 400);
+}
+runTraceroute();
+
+// ═══════════════════════════════════
+// TERMINAL CMD
+// ═══════════════════════════════════
+let cmdInit = false;
+let cmdPath = 'C:\\Users\\Antonio';
+let cmdHistory = [], histIdx = -1;
+
+const cmdCommands = {
+  help: () => [
+    {t:'header', v:'Comandos disponibles en esta terminal:'},
+    {t:'highlight',v:'  ipconfig          - Muestra configuración de red'},
+    {t:'highlight',v:'  ipconfig /all     - Config. detallada de red'},
+    {t:'highlight',v:'  ping [host]       - Comprueba conectividad'},
+    {t:'highlight',v:'  tracert [host]    - Traza ruta de red'},
+    {t:'highlight',v:'  nslookup [host]   - Consulta DNS'},
+    {t:'highlight',v:'  netstat           - Conexiones activas'},
+    {t:'highlight',v:'  netstat -an       - Todas las conexiones'},
+    {t:'highlight',v:'  arp -a            - Tabla ARP'},
+    {t:'highlight',v:'  route print       - Tabla de enrutamiento'},
+    {t:'highlight',v:'  systeminfo        - Info del sistema'},
+    {t:'highlight',v:'  tasklist          - Procesos en ejecución'},
+    {t:'highlight',v:'  cls               - Limpia la pantalla'},
+    {t:'highlight',v:'  dir               - Lista archivos'},
+    {t:'highlight',v:'  whoami            - Usuario actual'},
+    {t:'highlight',v:'  hostname          - Nombre del equipo'},
+  ],
+  ipconfig: () => [
+    {t:'output',v:''},
+    {t:'output',v:'Configuración IP de Windows'},
+    {t:'output',v:''},
+    {t:'header', v:'Adaptador Ethernet Ethernet:'},
+    {t:'output',v:'   Sufijo DNS específico para la conexión. . :'},
+    {t:'output',v:'   Dirección IPv6 de vínculo local . . . . . : fe80::a1b2:c3d4:e5f6:a7b8%5'},
+    {t:'success',v:'   Dirección IPv4. . . . . . . . . . . . . : 192.168.1.45'},
+    {t:'output',v:'   Máscara de subred . . . . . . . . . . . : 255.255.255.0'},
+    {t:'output',v:'   Puerta de enlace predeterminada . . . . : 192.168.1.1'},
+    {t:'output',v:''},
+    {t:'header', v:'Adaptador de túnel isatap.{...}:'},
+    {t:'output',v:'   Estado de los medios. . . . . . . . . . : Medios desconectados'},
+  ],
+  'ipconfig /all': () => [
+    {t:'output',v:''},
+    {t:'output',v:'Configuración IP de Windows'},
+    {t:'output',v:''},
+    {t:'output',v:'   Nombre de host . . . . . . . . : ANTONIO-PC'},
+    {t:'output',v:'   Sufijo DNS principal . . . . . : empresa.local'},
+    {t:'output',v:'   Tipo de nodo . . . . . . . . . : Difusión'},
+    {t:'output',v:'   Enrutamiento IP habilitado. . . : No'},
+    {t:'output',v:'   Proxy WINS habilitado . . . . . : No'},
+    {t:'output',v:''},
+    {t:'header', v:'Adaptador Ethernet Ethernet:'},
+    {t:'success',v:'   Dirección física . . . . . . . : A8-5E-45-12-34-56'},
+    {t:'success',v:'   Dirección IPv4. . . . . . . . : 192.168.1.45(Preferido)'},
+    {t:'output',v:'   Máscara de subred . . . . . . . : 255.255.255.0'},
+    {t:'output',v:'   Concesión obtenida. . . . . . . : lunes, 9 de marzo de 2026'},
+    {t:'output',v:'   Servidor DHCP . . . . . . . . . : 192.168.1.1'},
+    {t:'success',v:'   Servidores DNS . . . . . . . . : 8.8.8.8'},
+    {t:'output',v:'                                    8.8.4.4'},
+  ],
+  whoami: () => [{t:'output',v:'antonio-pc\\antonio'}],
+  hostname: () => [{t:'output',v:'ANTONIO-PC'}],
+  dir: () => [
+    {t:'output',v:' El volumen de la unidad C es Windows'},
+    {t:'output',v:' El número de serie del volumen es: A1B2-C3D4'},
+    {t:'output',v:''},
+    {t:'output',v:' Directorio de C:\\Users\\Antonio'},
+    {t:'output',v:''},
+    {t:'output',v:'09/03/2026  10:14    <DIR>          .'},
+    {t:'output',v:'09/03/2026  10:14    <DIR>          ..'},
+    {t:'output',v:'09/03/2026  09:00    <DIR>          Desktop'},
+    {t:'output',v:'08/03/2026  17:22    <DIR>          Documents'},
+    {t:'output',v:'09/03/2026  08:45    <DIR>          Downloads'},
+    {t:'output',v:'07/03/2026  11:30         4.521  notas_red.txt'},
+    {t:'output',v:'08/03/2026  16:00        12.800  script_backup.ps1'},
+    {t:'output',v:'               2 archivos          17.321 bytes'},
+  ],
+  netstat: () => [
+    {t:'output',v:''},
+    {t:'output',v:'Conexiones activas'},
+    {t:'output',v:''},
+    {t:'output',v:'  Proto  Dirección local          Dirección externa        Estado'},
+    {t:'success',v:'  TCP    192.168.1.45:54231       142.250.185.46:443       ESTABLECIDA'},
+    {t:'success',v:'  TCP    192.168.1.45:54287       104.16.133.229:443       ESTABLECIDA'},
+    {t:'output',v:'  TCP    192.168.1.45:54301       52.114.75.98:443         ESTABLECIDA'},
+    {t:'output',v:'  TCP    192.168.1.45:135          0.0.0.0:0               ESCUCHANDO'},
+    {t:'output',v:'  TCP    192.168.1.45:445          0.0.0.0:0               ESCUCHANDO'},
+    {t:'output',v:'  TCP    192.168.1.45:3389         0.0.0.0:0               ESCUCHANDO'},
+  ],
+  'netstat -an': () => [
+    {t:'output',v:''},
+    {t:'output',v:'Conexiones activas'},
+    {t:'output',v:''},
+    {t:'output',v:'  Proto  Dirección local          Dirección externa       Estado'},
+    {t:'success',v:'  TCP    0.0.0.0:80               0.0.0.0:0               ESCUCHANDO'},
+    {t:'success',v:'  TCP    0.0.0.0:443              0.0.0.0:0               ESCUCHANDO'},
+    {t:'output',v:'  TCP    0.0.0.0:3389              0.0.0.0:0               ESCUCHANDO'},
+    {t:'output',v:'  TCP    127.0.0.1:49664           0.0.0.0:0               ESCUCHANDO'},
+    {t:'success',v:'  TCP    192.168.1.45:54231        142.250.185.46:443      ESTABLECIDA'},
+    {t:'output',v:'  UDP    0.0.0.0:5353              *:*'},
+    {t:'output',v:'  UDP    192.168.1.45:68           *:*'},
+  ],
+  'arp -a': () => [
+    {t:'output',v:''},
+    {t:'output',v:'Interfaz: 192.168.1.45 --- 0x5'},
+    {t:'output',v:'  Dirección de Internet      Dirección física      Tipo'},
+    {t:'success',v:'  192.168.1.1               a8-5e-45-00-11-22     dinámico'},
+    {t:'output',v:'  192.168.1.20              a8-5e-45-33-44-55     dinámico'},
+    {t:'output',v:'  192.168.1.255             ff-ff-ff-ff-ff-ff     estático'},
+    {t:'output',v:'  224.0.0.22                01-00-5e-00-00-16     estático'},
+    {t:'output',v:'  255.255.255.255           ff-ff-ff-ff-ff-ff     estático'},
+  ],
+  'route print': () => [
+    {t:'output',v:''},
+    {t:'output',v:'Tabla de enrutamiento IPv4'},
+    {t:'output',v:'Rutas activas:'},
+    {t:'output',v:'Destino de red    Máscara de red  Puerta de enlace   Interfaz    Métrica'},
+    {t:'success',v:'          0.0.0.0          0.0.0.0      192.168.1.1   192.168.1.45     25'},
+    {t:'output',v:'        127.0.0.0        255.0.0.0        En vínculo       127.0.0.1    331'},
+    {t:'output',v:'      192.168.1.0    255.255.255.0        En vínculo    192.168.1.45    281'},
+    {t:'output',v:'    192.168.1.255  255.255.255.255        En vínculo    192.168.1.45    281'},
+  ],
+  systeminfo: () => [
+    {t:'output',v:''},
+    {t:'output',v:'Nombre de host:                      ANTONIO-PC'},
+    {t:'output',v:'Nombre del sistema operativo:        Microsoft Windows 11 Pro'},
+    {t:'success',v:'Versión del sistema operativo:       10.0.22631 Compilación 22631'},
+    {t:'output',v:'Fabricante del sistema operativo:    Microsoft Corporation'},
+    {t:'output',v:'Tipo de sistema:                     x64-based PC'},
+    {t:'output',v:'Procesador:                          Intel(R) Core(TM) i5-12400'},
+    {t:'output',v:'Memoria física total:                16.384 MB'},
+    {t:'output',v:'Memoria física disponible:           8.192 MB'},
+    {t:'output',v:'Dominio:                             empresa.local'},
+    {t:'output',v:'Servidor de inicio de sesión:        \\\\DC01'},
+  ],
+  tasklist: () => [
+    {t:'output',v:''},
+    {t:'output',v:'Nombre de imagen               PID  Nombre de sesión   Nº ses.  Uso de mem'},
+    {t:'output',v:'========================= ======== ================ ======== ============'},
+    {t:'output',v:'System Idle Process            0 Services            0          8 K'},
+    {t:'output',v:'System                         4 Services            0        148 K'},
+    {t:'success',v:'svchost.exe                  892 Services            0      4.512 K'},
+    {t:'output',v:'explorer.exe                3104 Console             1     42.312 K'},
+    {t:'output',v:'firefox.exe                 4892 Console             1    312.450 K'},
+    {t:'output',v:'cmd.exe                     5120 Console             1      4.100 K'},
+  ],
+  cls: () => { document.getElementById('cmd-output').innerHTML=''; return []; },
+};
+
+function pingCmd(host) {
+  const ip = host || '8.8.8.8';
+  const ms = [12,13,11,14].map(m => m+Math.floor(Math.random()*5));
+  return [
+    {t:'output',v:`\nHaciendo ping a ${ip} con 32 bytes de datos:`},
+    {t:'success',v:`Respuesta desde ${ip}: bytes=32 tiempo=${ms[0]}ms TTL=118`},
+    {t:'success',v:`Respuesta desde ${ip}: bytes=32 tiempo=${ms[1]}ms TTL=118`},
+    {t:'success',v:`Respuesta desde ${ip}: bytes=32 tiempo=${ms[2]}ms TTL=118`},
+    {t:'success',v:`Respuesta desde ${ip}: bytes=32 tiempo=${ms[3]}ms TTL=118`},
+    {t:'output',v:`\nEstadísticas de ping para ${ip}:`},
+    {t:'output',v:`    Paquetes: enviados = 4, recibidos = 4, perdidos = 0 (0% perdidos),`},
+    {t:'output',v:`Tiempos aproximados de ida y vuelta en milisegundos:`},
+    {t:'output',v:`    Mínimo = ${Math.min(...ms)}ms, Máximo = ${Math.max(...ms)}ms, Media = ${Math.round(ms.reduce((a,b)=>a+b)/ms.length)}ms`},
+  ];
+}
+
+function nslookupCmd(host) {
+  const h = host || 'google.com';
+  const ips = {'google.com':'142.250.185.46','8.8.8.8':'dns.google','cloudflare.com':'104.16.133.229','microsoft.com':'20.112.52.29'};
+  const ip = ips[h] || `${Math.floor(Math.random()*200)+40}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*254)+1}`;
+  return [
+    {t:'output',v:`Servidor:  dns.google`},
+    {t:'output',v:`Address:   8.8.8.8`},
+    {t:'output',v:``},
+    {t:'success',v:`Nombre:    ${h}`},
+    {t:'success',v:`Address:   ${ip}`},
+  ];
+}
+
+function initTerminal() {
+  cmdInit = true;
+  const out = document.getElementById('cmd-output');
+  const lines = [
+    {t:'header',v:'Microsoft Windows [Versión 10.0.22631.3447]'},
+    {t:'output',v:'(c) Microsoft Corporation. Todos los derechos reservados.'},
+    {t:'output',v:''},
+    {t:'success',v:'Terminal interactiva — escribe "help" para ver los comandos disponibles'},
+    {t:'output',v:''},
+  ];
+  lines.forEach(l => appendCmdLine(l, out));
+  const input = document.getElementById('cmd-input');
+  input.addEventListener('keydown', handleCmdKey);
+}
+
+function appendCmdLine(line, out) {
+  const div = document.createElement('div');
+  div.className = 'cmd-line ' + line.t;
+  div.textContent = line.v;
+  out.appendChild(div);
+  out.scrollTop = out.scrollHeight;
+}
+
+function handleCmdKey(e) {
+  const input = document.getElementById('cmd-input');
+  if(e.key === 'Enter') {
+    const raw = input.value.trim();
+    if(!raw) return;
+    cmdHistory.unshift(raw);
+    histIdx = -1;
+    input.value = '';
+    const out = document.getElementById('cmd-output');
+    // echo prompt
+    const p = document.createElement('div');
+    p.className = 'cmd-line prompt';
+    p.innerHTML = `<span class="cmd-user">antonio@ANTONIO-PC</span> <span class="cmd-path">${cmdPath}</span><span class="cmd-sym">&gt; ${raw}</span>`;
+    out.appendChild(p);
+    const cmd = raw.toLowerCase();
+    let results = [];
+    if(cmdCommands[cmd]) {
+      results = cmdCommands[cmd]();
+    } else if(cmd.startsWith('ping')) {
+      const parts = cmd.split(' ');
+      results = pingCmd(parts[1]);
+    } else if(cmd.startsWith('nslookup')) {
+      const parts = cmd.split(' ');
+      results = nslookupCmd(parts[1]);
+    } else if(cmd.startsWith('tracert')) {
+      results = [{t:'output',v:'Abre la pestaña "Traceroute" para ver la demo interactiva de tracert.'}];
+    } else if(cmd.startsWith('cd')) {
+      const parts = raw.trim().split(/\s+/);
+      const arg = parts.slice(1).join(' ');
+      if(!arg) {
+        results = [{t:'output', v: cmdPath}];
+      } else if(arg === '..') {
+        const sep = cmdPath.lastIndexOf('\\');
+        if(sep > 2) { cmdPath = cmdPath.substring(0, sep); }
+        else { cmdPath = cmdPath.substring(0, 3); }
+        document.getElementById('cmd-prompt-label').textContent = cmdPath + '>';
+        results = [];
+      } else if(arg === '\\' || arg === '/') {
+        cmdPath = 'C:\\';
+        document.getElementById('cmd-prompt-label').textContent = cmdPath + '>';
+        results = [];
+      } else if(arg.match(/^[a-zA-Z]:/)) {
+        cmdPath = arg;
+        document.getElementById('cmd-prompt-label').textContent = cmdPath + '>';
+        results = [];
+      } else {
+        cmdPath = cmdPath.replace(/\\$/, '') + '\\' + arg;
+        document.getElementById('cmd-prompt-label').textContent = cmdPath + '>';
+        results = [];
+      }
+    } else {
+      results = [{t:'error',v:`'${raw}' no se reconoce como un comando interno o externo,`},{t:'error',v:'programa o archivo por lotes ejecutable.'}];
+    }
+    if(results) results.forEach(l => { if(l) appendCmdLine(l, out); });
+  } else if(e.key === 'ArrowUp') {
+    histIdx = Math.min(histIdx+1, cmdHistory.length-1);
+    input.value = cmdHistory[histIdx] || '';
+    e.preventDefault();
+  } else if(e.key === 'ArrowDown') {
+    histIdx = Math.max(histIdx-1, -1);
+    input.value = histIdx>=0 ? cmdHistory[histIdx] : '';
+    e.preventDefault();
+  }
+}
+
+// ═══════════════════════════════════
+// TRIVIAL DE COMANDOS
+// ═══════════════════════════════════
+let trivialInit = false;
+let tvScore=0, tvCorrect=0, tvWrong=0, tvStreak=0, tvCurrent=0, tvAnswered=false;
+const TOTAL_Q = 15;
+
+const trivialQuestions = [
+  {q:'¿Qué comando muestra la configuración IP del equipo?', correct:'ipconfig', answers:['ipconfig','ifconfig','netstat','ipinfo'], hint:'Abreviatura de "IP Configuration"'},
+  {q:'¿Qué comando comprueba si hay conectividad con otro equipo?', correct:'ping', answers:['ping','tracert','route','netstat'], hint:'Nombre del sonido de los sonares'},
+  {q:'¿Qué comando traza la ruta de red hasta un destino?', correct:'tracert', answers:['tracert','route','ping','nslookup'], hint:'Trace Route → en Windows se abrevia...'},
+  {q:'¿Con qué comando ves las conexiones de red activas?', correct:'netstat', answers:['netstat','ipconfig','arp','route'], hint:'"NET statistics"'},
+  {q:'¿Qué comando consulta registros DNS de un dominio?', correct:'nslookup', answers:['nslookup','ping','ipconfig','dig'], hint:'"Name Server Lookup"'},
+  {q:'¿Con qué comando ves la tabla ARP del sistema?', correct:'arp -a', answers:['arp -a','arp -n','arp -l','netstat -arp'], hint:'ARP, con la opción que muestra todo'},
+  {q:'¿Qué comando muestra los procesos en ejecución?', correct:'tasklist', answers:['tasklist','ps','proclist','taskmgr'], hint:'Lista de tareas en Windows'},
+  {q:'¿Cómo limpias la pantalla del símbolo del sistema?', correct:'cls', answers:['cls','clear','clrscr','reset'], hint:'"CLear Screen" en Windows (3 letras)'},
+  {q:'¿Qué comando muestra el nombre del equipo?', correct:'hostname', answers:['hostname','computername','sysinfo','whoami'], hint:'Nombre del host...'},
+  {q:'¿Qué comando muestra el usuario actual del sistema?', correct:'whoami', answers:['whoami','whoim','getuser','id'], hint:'"Who am I?" en inglés'},
+  {q:'¿Con qué opción de ipconfig liberas la IP asignada por DHCP?', correct:'ipconfig /release', answers:['ipconfig /release','ipconfig /flush','ipconfig /renew','ipconfig /reset'], hint:'Liberar = release en inglés'},
+  {q:'¿Con qué opción de ipconfig solicitas una nueva IP al DHCP?', correct:'ipconfig /renew', answers:['ipconfig /renew','ipconfig /release','ipconfig /refresh','ipconfig /new'], hint:'Renovar = renew en inglés'},
+  {q:'¿Qué comando vacía la caché DNS del sistema?', correct:'ipconfig /flushdns', answers:['ipconfig /flushdns','ipconfig /cleardns','netstat /dns','dnscache /clear'], hint:'Flush = vaciar/limpiar'},
+  {q:'¿Qué comando muestra la tabla de enrutamiento IP?', correct:'route print', answers:['route print','route show','netstat -r','ipconfig /route'], hint:'"route" seguido de la acción de imprimir'},
+  {q:'¿Qué comando muestra información detallada del sistema operativo y hardware?', correct:'systeminfo', answers:['systeminfo','sysinfo','wininfo','msinfo'], hint:'Información del sistema... en una sola palabra'},
+];
+
+const tvMap = [];
+function initTrivial() {
+  trivialInit = true;
+  // Build map
+  const mapEl = document.getElementById('tv-map');
+  for(let i=0;i<TOTAL_Q;i++){
+    const cell = document.createElement('div');
+    cell.className = 'tmap-cell locked';
+    cell.id = 'tmap-'+i;
+    cell.textContent = i+1;
+    mapEl.appendChild(cell);
+    tvMap.push(cell);
+  }
+  tvMap[0].className = 'tmap-cell current';
+  loadTrivialQ(0);
+}
+
+function loadTrivialQ(idx) {
+  tvAnswered = false;
+  const q = trivialQuestions[idx];
+  document.getElementById('tq-num').textContent = idx+1;
+  document.getElementById('tq-total').textContent = TOTAL_Q;
+  document.getElementById('tq-text').textContent = q.q;
+  document.getElementById('tq-hint').textContent = '';
+  document.getElementById('tv-cmd-input').value = '';
+  document.getElementById('tv-next-btn').classList.remove('show');
+  document.getElementById('tv-level-label').textContent = Math.floor(idx/5)+1;
+  document.getElementById('tv-level').textContent = Math.floor(idx/5)+1;
+
+  // Shuffle answers
+  const shuffled = [...q.answers].sort(()=>Math.random()-.5);
+  const answersEl = document.getElementById('tq-answers');
+  answersEl.innerHTML = '';
+  shuffled.forEach(a => {
+    const btn = document.createElement('button');
+    btn.className = 'tq-answer';
+    btn.textContent = a;
+    btn.onclick = () => checkTrivialAnswer(a, q.correct);
+    answersEl.appendChild(btn);
+  });
+
+  // Update progress
+  document.getElementById('tv-progress').style.width = (idx/TOTAL_Q*100)+'%';
+}
+
+function checkTrivialAnswer(answer, correct) {
+  if(tvAnswered) return;
+  tvAnswered = true;
+  const isRight = answer.toLowerCase() === correct.toLowerCase();
+  handleTrivialResult(isRight, correct);
+}
+
+function checkTrivialInput() {
+  if(tvAnswered) return;
+  const input = document.getElementById('tv-cmd-input').value.trim();
+  if(!input) return;
+  const correct = trivialQuestions[tvCurrent].correct;
+  const isRight = input.toLowerCase() === correct.toLowerCase();
+  tvAnswered = true;
+  handleTrivialResult(isRight, correct);
+}
+
+document.addEventListener('keydown', function(e) {
+  if(e.key==='Enter' && document.getElementById('tv-cmd-input') === document.activeElement) {
+    checkTrivialInput();
+  }
+});
+
+function handleTrivialResult(isRight, correct) {
+  // Mark answers
+  document.querySelectorAll('.tq-answer').forEach(btn => {
+    btn.disabled = true;
+    if(btn.textContent === correct) btn.classList.add('correct');
+    else if(btn.textContent !== correct && !isRight) btn.classList.add('wrong');
+  });
+  document.getElementById('tv-cmd-input').disabled = true;
+
+  const q = trivialQuestions[tvCurrent];
+
+  if(isRight) {
+    tvCorrect++; tvStreak++;
+    const bonus = tvStreak>=3 ? 20 : 0;
+    tvScore += 10 + bonus;
+    tvMap[tvCurrent].className = 'tmap-cell done';
+    addTrivialLog(`✓ Correcta: ${correct}${bonus?` +${bonus} bonus racha!`:''}`, 'good');
+    document.getElementById('tq-hint').textContent = `✓ ¡Correcto! ${tvStreak>=3?'🔥 Racha x'+tvStreak+'!':''}`;
+  } else {
+    tvWrong++; tvStreak=0;
+    tvMap[tvCurrent].className = 'tmap-cell blocked';
+    addTrivialLog(`✗ Fallada. Respuesta: ${correct}`, 'bad');
+    document.getElementById('tq-hint').textContent = `✗ Incorrecto. La respuesta era: ${correct}`;
+    document.getElementById('tv-cmd-input').style.borderColor='#f44747';
+  }
+
+  document.getElementById('tv-score').textContent = tvScore;
+  document.getElementById('tv-correct').textContent = tvCorrect;
+  document.getElementById('tv-wrong').textContent = tvWrong;
+  document.getElementById('tv-streak').textContent = tvStreak + (tvStreak>=3?' 🔥':'');
+
+  if(tvCurrent < TOTAL_Q-1) {
+    document.getElementById('tv-next-btn').classList.add('show');
+    tvMap[tvCurrent+1].className = 'tmap-cell current';
+  } else {
+    // Final
+    document.getElementById('tq-text').textContent = `🎉 ¡Completado! Puntuación final: ${tvScore} pts | ${tvCorrect}/${TOTAL_Q} correctas`;
+    document.getElementById('tq-answers').innerHTML = `<button class="tq-answer correct" style="grid-column:span 2" onclick="restartTrivial()">🔄 Jugar de nuevo</button>`;
+    addTrivialLog(`Fin del juego — ${tvScore} puntos`, 'info');
+    document.getElementById('tv-progress').style.width='100%';
+  }
+}
+
+function nextTrivialQ() {
+  tvCurrent++;
+  document.getElementById('tv-cmd-input').disabled = false;
+  document.getElementById('tv-cmd-input').style.borderColor='';
+  loadTrivialQ(tvCurrent);
+}
+
+function restartTrivial() {
+  tvScore=0; tvCorrect=0; tvWrong=0; tvStreak=0; tvCurrent=0; tvAnswered=false;
+  tvMap.forEach((c,i)=>c.className=i===0?'tmap-cell current':'tmap-cell locked');
+  document.getElementById('tv-log').innerHTML='';
+  document.getElementById('tv-score').textContent=0;
+  document.getElementById('tv-correct').textContent=0;
+  document.getElementById('tv-wrong').textContent=0;
+  document.getElementById('tv-streak').textContent='0';
+  document.getElementById('tv-cmd-input').disabled=false;
+  document.getElementById('tv-cmd-input').style.borderColor='';
+  loadTrivialQ(0);
+}
+
+function addTrivialLog(msg, type) {
+  const log = document.getElementById('tv-log');
+  const div = document.createElement('div');
+  div.className = 'log-entry ' + type;
+  div.textContent = `Q${tvCurrent+1}: ${msg}`;
+  log.insertBefore(div, log.firstChild);
+}
+
+// ═══════════════════════════════════
+// LINUX TERMINAL
+// ═══════════════════════════════════
+let linuxInit = false;
+let lxPath = '/home/antonio';
+let lxHistory = [], lxHistIdx = -1;
+
+const lxFS = {
+  '/': ['home','etc','var','usr','tmp','boot','dev','proc'],
+  '/home': ['antonio'],
+  '/home/antonio': ['Documentos','Descargas','scripts','notas.txt','.bashrc'],
+  '/home/antonio/scripts': ['backup.sh','monitor.sh','deploy.sh'],
+  '/etc': ['passwd','hosts','hostname','resolv.conf','fstab','network','apt','ssh','crontab'],
+  '/etc/ssh': ['sshd_config','ssh_config'],
+  '/var': ['log','www','lib','cache'],
+  '/var/log': ['syslog','auth.log','kern.log','dpkg.log'],
+  '/usr': ['bin','lib','share','local'],
+  '/tmp': ['tmp_file1','tmp_session'],
+};
+
+const lxCmds = {
+  pwd:      () => [{t:'output',v: lxPath}],
+  whoami:   () => [{t:'output',v:'antonio'}],
+  hostname: () => [{t:'output',v:'ubuntu-srv'}],
+  'uname -a': () => [{t:'output',v:'Linux ubuntu-srv 6.5.0-18-generic #18~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC x86_64 GNU/Linux'}],
+  'uname -r': () => [{t:'output',v:'6.5.0-18-generic'}],
+  date:     () => [{t:'output',v: new Date().toString()}],
+  clear:    () => { document.getElementById('lx-output').innerHTML=''; return []; },
+  'cat /etc/os-release': () => [
+    {t:'success',v:'NAME="Ubuntu"'},{t:'success',v:'VERSION="22.04.3 LTS (Jammy Jellyfish)"'},
+    {t:'output',v:'ID=ubuntu'},{t:'output',v:'ID_LIKE=debian'},
+    {t:'output',v:'PRETTY_NAME="Ubuntu 22.04.3 LTS"'},
+    {t:'output',v:'VERSION_ID="22.04"'},{t:'output',v:'HOME_URL="https://www.ubuntu.com/"'},
+  ],
+  'cat /etc/hostname': () => [{t:'output',v:'ubuntu-srv'}],
+  'cat /etc/hosts': () => [
+    {t:'output',v:'127.0.0.1   localhost'},{t:'output',v:'127.0.1.1   ubuntu-srv'},
+    {t:'output',v:'::1         localhost ip6-localhost ip6-loopback'},
+    {t:'output',v:'# Servidores corporativos'},
+    {t:'success',v:'192.168.1.10  dc01.empresa.local dc01'},
+    {t:'success',v:'192.168.1.20  fileserver.empresa.local fileserver'},
+  ],
+  'cat /etc/resolv.conf': () => [
+    {t:'output',v:'# Generated by NetworkManager'},
+    {t:'output',v:'nameserver 8.8.8.8'},{t:'output',v:'nameserver 8.8.4.4'},
+    {t:'output',v:'search empresa.local'},
+  ],
+  'ip a': () => [
+    {t:'output',v:'1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536'},
+    {t:'output',v:'    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00'},
+    {t:'output',v:'    inet 127.0.0.1/8 scope host lo'},
+    {t:'output',v:''},
+    {t:'success',v:'2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP'},
+    {t:'success',v:'    link/ether a8:5e:45:12:34:56 brd ff:ff:ff:ff:ff:ff'},
+    {t:'success',v:'    inet 192.168.1.45/24 brd 192.168.1.255 scope global dynamic eth0'},
+    {t:'output',v:'    inet6 fe80::a1b2:c3d4:e5f6:a7b8/64 scope link'},
+  ],
+  'ip route': () => [
+    {t:'success',v:'default via 192.168.1.1 dev eth0 proto dhcp src 192.168.1.45 metric 100'},
+    {t:'output',v:'192.168.1.0/24 dev eth0 proto kernel scope link src 192.168.1.45'},
+  ],
+  'netstat -tulnp': () => [
+    {t:'header',v:'Proto Recv-Q Send-Q  Local Address    Foreign Address  State     PID/Program'},
+    {t:'success',v:'tcp        0      0  0.0.0.0:22       0.0.0.0:*        LISTEN    1042/sshd'},
+    {t:'success',v:'tcp        0      0  0.0.0.0:80       0.0.0.0:*        LISTEN    2310/apache2'},
+    {t:'output',v:'tcp        0      0  127.0.0.1:3306    0.0.0.0:*        LISTEN    1876/mysqld'},
+    {t:'output',v:'udp        0      0  0.0.0.0:68        0.0.0.0:*                  987/dhclient'},
+  ],
+  'ss -tulnp': () => [
+    {t:'header',v:'Netid  State   Recv-Q  Send-Q   Local Address:Port   Process'},
+    {t:'success',v:'tcp    LISTEN  0       128      0.0.0.0:22          users:((sshd,pid=1042))'},
+    {t:'success',v:'tcp    LISTEN  0       511      0.0.0.0:80          users:((apache2,pid=2310))'},
+    {t:'output',v:'tcp    LISTEN  0       70       127.0.0.1:3306       users:((mysqld,pid=1876))'},
+  ],
+  'ps aux': () => [
+    {t:'header',v:'USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND'},
+    {t:'output',v:'root         1  0.0  0.1  168940 11032 ?        Ss  08:00   0:02 /sbin/init'},
+    {t:'success',v:'antonio   1234  0.1  0.5  612488 42156 ?        Sl  09:12   0:15 /usr/bin/python3'},
+    {t:'output',v:'www-data  2310  0.0  0.2  14928 16384 ?        S   08:01   0:00 apache2'},
+    {t:'output',v:'mysql     1876  0.2  1.5 1876432 124000 ?       Sl  08:01   0:45 /usr/sbin/mysqld'},
+    {t:'output',v:'antonio   5012  0.0  0.0  14192  4096 pts/0    R+  10:30   0:00 ps aux'},
+  ],
+  'df -h': () => [
+    {t:'header',v:'Filesystem      Size  Used Avail Use% Mounted on'},
+    {t:'success',v:'/dev/sda1        50G   18G   29G  39% /'},
+    {t:'output',v:'tmpfs           2.0G     0  2.0G   0% /dev/shm'},
+    {t:'output',v:'/dev/sda2       200G   87G  103G  46% /var'},
+    {t:'output',v:'/dev/sdb1       1.0T  340G  660G  34% /backups'},
+  ],
+  'free -h': () => [
+    {t:'header',v:'               total        used        free      shared  buff/cache   available'},
+    {t:'success',v:'Mem:            15Gi        4.2Gi       8.1Gi      312Mi       2.8Gi      10.7Gi'},
+    {t:'output',v:'Swap:          2.0Gi           0B       2.0Gi'},
+  ],
+  top: () => [
+    {t:'header',v:'top - 10:30:15 up 2 days, 14:22,  1 user,  load average: 0.12, 0.08, 0.05'},
+    {t:'output',v:'Tasks: 142 total,   1 running, 141 sleeping,   0 stopped,   0 zombie'},
+    {t:'success',v:'%Cpu(s):  2.3 us,  0.5 sy,  0.0 ni, 96.8 id,  0.4 wa'},
+    {t:'output',v:'MiB Mem :  15360.0 total,   8300.4 free,   4300.2 used,   2759.4 buff/cache'},
+    {t:'output',v:''},
+    {t:'header',v:'  PID USER     PR  NI    VIRT    RES  SHR S  %CPU %MEM     TIME+ COMMAND'},
+    {t:'output',v:' 1876 mysql    20   0 1.8g    124m   9m S   0.7  0.8   0:45.23 mysqld'},
+    {t:'output',v:' 2310 www-data 20   0  14928   16m   8m S   0.3  0.1   0:00.45 apache2'},
+    {t:'output',v:' 1234 antonio  20   0 612488   42m  18m S   0.1  0.5   0:15.10 python3'},
+    {t:'output',v:'(Pulsa q para salir — simulación)'},
+  ],
+  who: () => [{t:'success',v:'antonio  pts/0        2026-03-09 09:12 (192.168.1.20)'},{t:'output',v:'root     tty1         2026-03-09 08:00'}],
+  'last': () => [
+    {t:'output',v:'antonio  pts/0        192.168.1.20     Mon Mar  9 09:12   still logged in'},
+    {t:'output',v:'antonio  pts/0        192.168.1.20     Sun Mar  8 17:45 - 18:30  (00:45)'},
+    {t:'output',v:'root     tty1                          Mon Mar  9 08:00   still logged in'},
+  ],
+  'uptime': () => [{t:'success',v:' 10:30:15 up 2 days, 14:22,  1 user,  load average: 0.12, 0.08, 0.05'}],
+  'sudo apt update': () => [
+    {t:'output',v:'[sudo] password for antonio: '},
+    {t:'output',v:'Get:1 http://es.archive.ubuntu.com/ubuntu jammy InRelease [270 kB]'},
+    {t:'output',v:'Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]'},
+    {t:'success',v:'Fetched 380 kB in 1s (380 kB/s)'},
+    {t:'success',v:'Reading package lists... Done'},
+    {t:'success',v:'Building dependency tree... Done'},
+    {t:'output',v:'5 packages can be upgraded. Run apt list --upgradable to see them.'},
+  ],
+  'sudo apt upgrade': () => [
+    {t:'output',v:'Reading package lists... Done'},{t:'output',v:'Building dependency tree... Done'},
+    {t:'output',v:'Calculating upgrade... Done'},
+    {t:'output',v:'The following packages will be upgraded: curl libssl3 openssh-server wget vim'},
+    {t:'success',v:'5 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.'},
+  ],
+  'systemctl status ssh': () => [
+    {t:'success',v:'● ssh.service - OpenBSD Secure Shell server'},
+    {t:'success',v:'     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; preset: enabled)'},
+    {t:'success',v:'     Active: active (running) since Mon 2026-03-09 08:00:01 UTC; 2h 30min ago'},
+    {t:'output',v:'       Docs: man:sshd(8) man:sshd_config(5)'},
+    {t:'output',v:'   Main PID: 1042 (sshd)'},
+    {t:'output',v:'      Tasks: 1 (limit: 4654)'},
+    {t:'output',v:'     Memory: 5.2M'},
+  ],
+  'systemctl status apache2': () => [
+    {t:'success',v:'● apache2.service - The Apache HTTP Server'},
+    {t:'success',v:'     Loaded: loaded (/lib/systemd/system/apache2.service; enabled)'},
+    {t:'success',v:'     Active: active (running) since Mon 2026-03-09 08:01:12 UTC; 2h 29min ago'},
+    {t:'output',v:'   Main PID: 2310 (apache2)'},
+    {t:'output',v:'      Tasks: 55 (limit: 4654)'},
+    {t:'output',v:'     Memory: 16.4M'},
+  ],
+  'sudo ufw status': () => [
+    {t:'success',v:'Status: active'},
+    {t:'output',v:''},
+    {t:'header',v:'To                         Action      From'},
+    {t:'output',v:'--                         ------      ----'},
+    {t:'success',v:'22/tcp                     ALLOW       Anywhere'},
+    {t:'success',v:'80/tcp                     ALLOW       Anywhere'},
+    {t:'success',v:'443/tcp                    ALLOW       Anywhere'},
+    {t:'output',v:'22/tcp (v6)                 ALLOW       Anywhere (v6)'},
+  ],
+  'sudo ufw enable': () => [{t:'success',v:'Firewall is active and enabled on system startup'}],
+  history: () => lxHistory.slice(0,15).map((h,i) => ({t:'output',v:`  ${(lxHistory.length-i).toString().padStart(3,' ')}  ${h}`})),
+  env: () => [
+    {t:'output',v:'HOME=/home/antonio'},{t:'output',v:'USER=antonio'},{t:'success',v:'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'},
+    {t:'output',v:'SHELL=/bin/bash'},{t:'output',v:'TERM=xterm-256color'},{t:'output',v:'LANG=es_ES.UTF-8'},
+  ],
+  'echo $PATH': () => [{t:'output',v:'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'}],
+  'echo $USER': () => [{t:'output',v:'antonio'}],
+  'echo $HOME': () => [{t:'output',v:'/home/antonio'}],
+  'cat /proc/cpuinfo': () => [
+    {t:'output',v:'processor   : 0'},{t:'output',v:'vendor_id   : GenuineIntel'},
+    {t:'success',v:'model name  : Intel(R) Core(TM) i5-12400 @ 2.50GHz'},
+    {t:'output',v:'cpu cores   : 6'},{t:'output',v:'cache size  : 18432 KB'},
+  ],
+  help: () => [
+    {t:'header',v:'Comandos disponibles en esta terminal Linux:'},
+    {t:'highlight',v:'  ls [ruta]              - Lista archivos y directorios'},
+    {t:'highlight',v:'  pwd                    - Muestra ruta actual'},
+    {t:'highlight',v:'  cd [ruta] / cd ..      - Navega directorios'},
+    {t:'highlight',v:'  cat [archivo]          - Muestra contenido de archivo'},
+    {t:'highlight',v:'  ip a                   - Muestra interfaces de red'},
+    {t:'highlight',v:'  ip route               - Tabla de enrutamiento'},
+    {t:'highlight',v:'  netstat -tulnp         - Puertos y conexiones'},
+    {t:'highlight',v:'  ss -tulnp              - Socket statistics'},
+    {t:'highlight',v:'  ps aux                 - Procesos en ejecución'},
+    {t:'highlight',v:'  top                    - Monitor de recursos'},
+    {t:'highlight',v:'  df -h                  - Uso de disco'},
+    {t:'highlight',v:'  free -h                - Uso de memoria RAM'},
+    {t:'highlight',v:'  uname -a               - Info del kernel'},
+    {t:'highlight',v:'  systemctl status [svc] - Estado de servicios'},
+    {t:'highlight',v:'  sudo ufw status        - Estado del firewall'},
+    {t:'highlight',v:'  sudo apt update        - Actualizar repositorios'},
+    {t:'highlight',v:'  who / last / uptime    - Usuarios e historial'},
+    {t:'highlight',v:'  grep / find / chmod    - Utilidades'},
+    {t:'highlight',v:'  clear                  - Limpia la pantalla'},
+  ],
+};
+
+function lxUpdatePrompt() {
+  const display = lxPath.replace('/home/antonio', '~');
+  document.getElementById('lx-path-span').textContent = display;
+}
+
+function lxAppendLine(line, out) {
+  const div = document.createElement('div');
+  div.className = 'cmd-line ' + line.t;
+  div.textContent = line.v;
+  out.appendChild(div);
+  out.scrollTop = out.scrollHeight;
+}
+
+function initLinux() {
+  linuxInit = true;
+  const out = document.getElementById('lx-output');
+  const welcome = [
+    {t:'success', v:'Ubuntu 22.04.3 LTS ubuntu-srv tty1'},
+    {t:'output',  v:''},
+    {t:'output',  v:'Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 6.5.0-18-generic x86_64)'},
+    {t:'output',  v:''},
+    {t:'output',  v:' * Documentation:  https://help.ubuntu.com'},
+    {t:'success', v:' System information as of Mon Mar  9 10:30:15 UTC 2026'},
+    {t:'output',  v:''},
+    {t:'output',  v:'  System load:  0.12              Processes:             142'},
+    {t:'output',  v:'  Usage of /:   39.0% of 50GB     Users logged in:       1'},
+    {t:'output',  v:'  Memory usage: 27%               IPv4 address for eth0: 192.168.1.45'},
+    {t:'output',  v:''},
+    {t:'success', v:'Escribe "help" para ver los comandos disponibles.'},
+    {t:'output',  v:''},
+  ];
+  welcome.forEach(l => lxAppendLine(l, out));
+  const input = document.getElementById('lx-input');
+  input.addEventListener('keydown', handleLxKey);
+}
+
+function handleLxKey(e) {
+  const input = document.getElementById('lx-input');
+  if(e.key === 'Enter') {
+    const raw = input.value.trim();
+    if(!raw) return;
+    lxHistory.unshift(raw);
+    lxHistIdx = -1;
+    input.value = '';
+    const out = document.getElementById('lx-output');
+    const pathDisplay = lxPath.replace('/home/antonio','~');
+    const p = document.createElement('div');
+    p.className = 'cmd-line prompt';
+    p.innerHTML = `<span class="cmd-user" style="color:#cc69a0">antonio@ubuntu</span><span style="color:#fff">:</span><span class="cmd-path" style="color:#569cd6">${pathDisplay}</span><span class="cmd-sym">$ ${raw}</span>`;
+    out.appendChild(p);
+    const cmd = raw.trim();
+    const cmdLower = cmd.toLowerCase();
+    let results = [];
+
+    if(lxCmds[cmd]) {
+      results = lxCmds[cmd]();
+    } else if(lxCmds[cmdLower]) {
+      results = lxCmds[cmdLower]();
+    } else if(cmdLower === 'ls' || cmdLower.startsWith('ls ')) {
+      const parts = cmd.split(' ');
+      let target = lxPath;
+      if(parts[1]) { target = parts[1].startsWith('/') ? parts[1] : lxPath + '/' + parts[1]; }
+      const entries = lxFS[target] || lxFS[target.replace(/\/+$/,'')] || [];
+      if(entries.length > 0) {
+        results = [{t:'success', v: entries.join('   ')}];
+      } else {
+        results = [{t:'error', v: `ls: no se puede acceder a '${parts[1]||target}': No existe el archivo o el directorio`}];
+      }
+    } else if(cmdLower === 'cd' || cmdLower.startsWith('cd ')) {
+      const parts = cmd.split(' ');
+      const arg = parts.slice(1).join(' ').trim();
+      if(!arg || arg === '~') {
+        lxPath = '/home/antonio';
+      } else if(arg === '..') {
+        const sep = lxPath.lastIndexOf('/');
+        lxPath = sep > 0 ? lxPath.substring(0, sep) : '/';
+      } else if(arg === '-') {
+        lxPath = '/home/antonio';
+      } else if(arg.startsWith('/')) {
+        lxPath = arg.replace(/\/+$/, '') || '/';
+      } else {
+        lxPath = (lxPath === '/' ? '' : lxPath) + '/' + arg;
+      }
+      lxUpdatePrompt();
+      results = [];
+    } else if(cmdLower.startsWith('cat ')) {
+      const file = cmd.substring(4).trim();
+      const known = lxCmds['cat ' + file];
+      if(known) { results = known(); }
+      else if(file.endsWith('.sh')) {
+        results = [
+          {t:'header', v:'#!/bin/bash'},
+          {t:'output', v:'# Script de mantenimiento'},
+          {t:'success', v:'echo "Iniciando proceso..."'},
+          {t:'output', v:'DATE=$(date +%Y%m%d)'},
+          {t:'output', v:'BACKUP_DIR="/backups/$DATE"'},
+          {t:'success', v:'rsync -avz /var/www/ $BACKUP_DIR/'},
+          {t:'output', v:'echo "Backup completado: $BACKUP_DIR"'},
+        ];
+      } else {
+        results = [{t:'error', v:`cat: ${file}: No existe el archivo o el directorio`}];
+      }
+    } else if(cmdLower.startsWith('ping ')) {
+      const host = cmd.split(' ')[1];
+      const ms = [12,11,13,12].map(m=>m+Math.floor(Math.random()*5));
+      results = [
+        {t:'output',  v:`PING ${host} (8.8.8.8) 56(84) bytes of data.`},
+        {t:'success', v:`64 bytes from ${host}: icmp_seq=1 ttl=118 time=${ms[0]} ms`},
+        {t:'success', v:`64 bytes from ${host}: icmp_seq=2 ttl=118 time=${ms[1]} ms`},
+        {t:'success', v:`64 bytes from ${host}: icmp_seq=3 ttl=118 time=${ms[2]} ms`},
+        {t:'success', v:`64 bytes from ${host}: icmp_seq=4 ttl=118 time=${ms[3]} ms`},
+        {t:'output',  v:`--- ${host} ping statistics ---`},
+        {t:'success', v:`4 packets transmitted, 4 received, 0% packet loss, time 3004ms`},
+        {t:'output',  v:`rtt min/avg/max/mdev = ${Math.min(...ms)}/${Math.round(ms.reduce((a,b)=>a+b)/ms.length)}/${Math.max(...ms)}/0.5 ms`},
+      ];
+    } else if(cmdLower.startsWith('grep ')) {
+      results = [{t:'success',v:`antonio:x:1000:1000:Antonio Oyuela,,,:/home/antonio:/bin/bash`}];
+    } else if(cmdLower.startsWith('find ')) {
+      results = [
+        {t:'output',v:'/home/antonio/scripts/backup.sh'},
+        {t:'output',v:'/home/antonio/scripts/monitor.sh'},
+        {t:'output',v:'/home/antonio/scripts/deploy.sh'},
+      ];
+    } else if(cmdLower.startsWith('chmod ')) {
+      results = [{t:'success',v:`Permisos aplicados correctamente.`}];
+    } else if(cmdLower.startsWith('echo ')) {
+      const val = cmd.substring(5);
+      const envMap = {'$PATH':'/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin','$USER':'antonio','$HOME':'/home/antonio','$SHELL':'/bin/bash','$HOSTNAME':'ubuntu-srv'};
+      results = [{t:'output', v: envMap[val] || val.replace(/['"]/g,'')}];
+    } else if(cmdLower.startsWith('mkdir ')) {
+      results = [{t:'success',v:`Directorio creado: ${cmd.split(' ')[1]}`}];
+    } else if(cmdLower.startsWith('rm ')) {
+      results = [{t:'success',v:`Archivo eliminado: ${cmd.split(' ').slice(1).join(' ')}`}];
+    } else if(cmdLower.startsWith('cp ')) {
+      results = [{t:'success',v:`Copia realizada correctamente.`}];
+    } else if(cmdLower.startsWith('mv ')) {
+      results = [{t:'success',v:`Movido correctamente.`}];
+    } else if(cmdLower.startsWith('nslookup ')) {
+      const h = cmd.split(' ')[1];
+      results = [{t:'output',v:'Server:  8.8.8.8'},{t:'output',v:'Address: 8.8.8.8#53'},{t:'output',v:''},{t:'success',v:`Name:    ${h}`},{t:'success',v:`Address: 142.250.185.46`}];
+    } else if(cmdLower.startsWith('ssh ')) {
+      results = [{t:'success',v:`Conectando a ${cmd.split(' ')[1]}...`},{t:'success',v:`Welcome to Ubuntu 22.04 LTS`},{t:'output',v:`Last login: Sun Mar 8 17:45:00 2026`}];
+    } else if(cmdLower.startsWith('sudo ')) {
+      const subcmd = cmdLower.substring(5);
+      if(lxCmds['sudo '+subcmd]) { results = lxCmds['sudo '+subcmd](); }
+      else { results = [{t:'output',v:`[sudo] password for antonio: `},{t:'success',v:`Comando ejecutado correctamente.`}]; }
+    } else if(cmdLower.startsWith('systemctl ')) {
+      if(lxCmds[cmdLower]) { results = lxCmds[cmdLower](); }
+      else { results = [{t:'success',v:`Servicio operativo.`}]; }
+    } else if(cmdLower === 'exit' || cmdLower === 'logout') {
+      results = [{t:'output',v:'logout'},{t:'output',v:'Connection to ubuntu-srv closed.'}];
+    } else {
+      results = [{t:'error',v:`bash: ${cmd.split(' ')[0]}: command not found`}];
+    }
+
+    if(results) results.forEach(l => { if(l) lxAppendLine(l, out); });
+    lxUpdatePrompt();
+  } else if(e.key === 'ArrowUp') {
+    lxHistIdx = Math.min(lxHistIdx+1, lxHistory.length-1);
+    input.value = lxHistory[lxHistIdx] || '';
+    e.preventDefault();
+  } else if(e.key === 'ArrowDown') {
+    lxHistIdx = Math.max(lxHistIdx-1, -1);
+    input.value = lxHistIdx>=0 ? lxHistory[lxHistIdx] : '';
+    e.preventDefault();
+  }
+}
+
+// ═══════════════════════════════════
+// OPEN SOURCE TOOLS
+// ═══════════════════════════════════
+let osInit = false;
+
+const osTools = [
+  // ── SEGURIDAD (red) ──
+  {icon:'🦈', name:'Wireshark', cat:'Análisis de red', badge:'red', badgeText:'Esencial', gui:'nmap',
+   desc:'Analizador de protocolos de red. Captura y examina tráfico en tiempo real para diagnosticar problemas de conectividad.',
+   tags:['Captura paquetes','TCP/IP','Filtros BPF','Protocolos']},
+  {icon:'🔍', name:'Nmap / Zenmap', cat:'Escaneo de red', badge:'red', badgeText:'⚡ GUI Interactiva', gui:'nmap',
+   desc:'Escáner de puertos y seguridad. Detecta hosts, servicios y sistemas operativos. Zenmap es su interfaz gráfica oficial.',
+   tags:['Escaneo puertos','OS detection','Scripts NSE','Inventario']},
+  {icon:'🔒', name:'pfSense / IPTables', cat:'Firewall / Router', badge:'red', badgeText:'Seguridad',
+   desc:'Distribución open source basada en FreeBSD que actúa como firewall y router empresarial con interfaz web de gestión.',
+   tags:['Firewall','VPN','IDS/IPS','QoS']},
+  {icon:'🛡️', name:'Snort / Suricata', cat:'IDS / IPS', badge:'red', badgeText:'Seguridad',
+   desc:'Sistemas de detección y prevención de intrusiones. Monitorizan el tráfico de red en tiempo real buscando actividad maliciosa.',
+   tags:['IDS','IPS','Firmas','Alertas']},
+  {icon:'🔑', name:'OpenVPN / WireGuard', cat:'VPN', badge:'red', badgeText:'Cifrado',
+   desc:'Soluciones VPN open source para conexiones seguras. WireGuard destaca por su simplicidad y alto rendimiento.',
+   tags:['Cifrado','Túneles','Acceso remoto','Site-to-site']},
+  {icon:'🔐', name:'Fail2Ban', cat:'Protección acceso', badge:'red', badgeText:'Anti-intrusión',
+   desc:'Analiza logs del sistema y bloquea automáticamente IPs con comportamiento sospechoso. Esencial para servidores expuestos.',
+   tags:['Brute-force','SSH','Iptables','Logs']},
+  // ── INFRAESTRUCTURA (blue) ──
+  {icon:'🖥️', name:'Proxmox VE', cat:'Virtualización', badge:'blue', badgeText:'Infraestructura',
+   desc:'Plataforma de virtualización open source basada en KVM y LXC. Alternativa gratuita a VMware vSphere para entornos empresariales.',
+   tags:['KVM','LXC','Clustering','Alta disponibilidad']},
+  {icon:'🐳', name:'Docker', cat:'Contenedores', badge:'blue', badgeText:'Infraestructura',
+   desc:'Plataforma de contenedores que empaqueta aplicaciones con sus dependencias. Facilita el despliegue consistente en cualquier entorno.',
+   tags:['Contenedores','Imágenes','Docker Compose','Portabilidad']},
+  {icon:'🌐', name:'Apache / Nginx', cat:'Servidor web', badge:'blue', badgeText:'Infraestructura',
+   desc:'Servidores web open source de alto rendimiento. Apache es el más extendido; Nginx destaca en cargas elevadas y proxy inverso.',
+   tags:['HTTP/HTTPS','Proxy inverso','SSL/TLS','Virtual Hosts']},
+  {icon:'🐧', name:'Ubuntu Server', cat:'Sistema operativo', badge:'blue', badgeText:'Base',
+   desc:'Distribución Linux server de referencia empresarial. Soporte LTS de 5 años y amplia compatibilidad con servicios IT.',
+   tags:['Linux','LTS','Servidores','Apt']},
+  {icon:'💾', name:'Bacula / Amanda / Clonezilla', cat:'Copias de seguridad', badge:'blue', badgeText:'Backup',
+   desc:'Sistemas de backup empresariales open source. Gestionan copias de múltiples servidores de forma centralizada y automatizada.',
+   tags:['Backup','Restauración','Programación','Multiplataforma']},
+  {icon:'🔄', name:'Ansible', cat:'Automatización', badge:'blue', badgeText:'DevOps',
+   desc:'Herramienta de automatización de infraestructura. Permite gestionar configuraciones y despliegues en múltiples servidores sin agentes.',
+   tags:['Playbooks','SSH','Idempotente','Inventario']},
+  // ── SERVICIOS (green) ──
+  {icon:'🎫', name:'GLPI', cat:'Gestión de tickets', badge:'green', badgeText:'Helpdesk',
+   desc:'Sistema de gestión de activos IT y tickets de soporte. Permite registrar, seguir y resolver incidencias de forma estructurada con ITIL.',
+   tags:['ITIL','Tickets','Inventario IT','SLA']},
+  {icon:'📁', name:'Samba', cat:'Compartición archivos', badge:'green', badgeText:'Integración',
+   desc:'Implementación del protocolo SMB/CIFS. Permite compartir archivos e impresoras entre Linux y Windows en redes mixtas.',
+   tags:['SMB/CIFS','Active Directory','NAS','Windows/Linux']},
+  {icon:'🐘', name:'Nextcloud', cat:'Nube privada', badge:'green', badgeText:'Privacidad',
+   desc:'Plataforma de almacenamiento en la nube auto-alojada. Alternativa open source a Google Drive o OneDrive para empresas.',
+   tags:['Almacenamiento','Colaboración','Calendarios','Autoalojado']},
+  {icon:'📮', name:'Postfix / Dovecot', cat:'Servidor de correo', badge:'green', badgeText:'Email',
+   desc:'Solución completa de servidor de correo electrónico open source. Postfix gestiona el envío SMTP y Dovecot el acceso IMAP/POP3.',
+   tags:['SMTP','IMAP','POP3','Antispam']},
+  {icon:'🖨️', name:'CUPS', cat:'Servidor de impresión', badge:'green', badgeText:'Impresión',
+   desc:'Sistema de impresión open source para redes. Gestiona colas de impresión y comparte impresoras en entornos Linux y mixtos.',
+   tags:['IPP','PostScript','Drivers','Compartir']},
+  {icon:'🗄️', name:'FreeIPA / OpenLDAP', cat:'Directorio de usuarios', badge:'green', badgeText:'Identidad',
+   desc:'Alternativa open source a Active Directory. Gestiona usuarios, grupos, políticas y autenticación centralizada en entornos Linux.',
+   tags:['LDAP','Kerberos','DNS','Usuarios']},
+  // ── MONITORIZACIÓN (purple) ──
+  {icon:'📊', name:'Zabbix', cat:'Monitorización', badge:'purple', badgeText:'Monitorización',
+   desc:'Plataforma de monitorización de infraestructura IT. Supervisa servidores, redes y apps con alertas en tiempo real y dashboards.',
+   tags:['Métricas','Alertas','SNMP','Dashboards']},
+  {icon:'📈', name:'Grafana + Prometheus', cat:'Métricas y dashboards', badge:'purple', badgeText:'Monitorización',
+   desc:'Combinación estándar para monitorización moderna: Prometheus recopila métricas y Grafana las visualiza en dashboards interactivos.',
+   tags:['Time-series','Dashboards','Alertas','Kubernetes']},
+  {icon:'🔎', name:'Nagios / Icinga', cat:'Monitorización de red', badge:'purple', badgeText:'Monitorización',
+   desc:'Herramientas clásicas de monitorización de infraestructura. Comprueban disponibilidad de hosts, servicios y envían alertas por email.',
+   tags:['Disponibilidad','Plugins','SNMP','Notificaciones']},
+  {icon:'📋', name:'Graylog / ELK Stack', cat:'Gestión de logs', badge:'purple', badgeText:'Logs',
+   desc:'Plataformas de centralización y análisis de logs. Permiten buscar, correlacionar y visualizar eventos de toda la infraestructura.',
+   tags:['Elasticsearch','Logstash','Kibana','SIEM']},
+  // ── NUEVAS HERRAMIENTAS ──
+  {icon:'☸️', name:'Kubernetes', cat:'Orquestación de contenedores', badge:'blue', badgeText:'Infraestructura',
+   desc:'Plataforma de orquestación de contenedores Docker. Gestiona su despliegue, escalado y disponibilidad en clústeres de servidores. Si Docker es el camión, Kubernetes es el sistema logístico completo.',
+   tags:['Clústeres','Pods','Escalado automático','Alta disponibilidad']},
+  {icon:"💿", name:"Hirens Boot CD", cat:"Diagnóstico y recuperación", badge:"red", badgeText:"Esencial",
+   desc:"CD/USB de arranque con más de 100 herramientas para diagnóstico, recuperación y reparación de sistemas. Imprescindible en el maletín de cualquier técnico informático para rescatar equipos que no arrancan.",
+   tags:["Recuperación datos","Antivirus offline","Particionado","Reparación MBR"]},
+];
+
+// ── NMAP GUI ──
+let nmapScanning = false;
+let nmapHosts = [];
+let nmapSelectedHost = null;
+
+const nmapProfiles = {
+  ping:    { cmd: 'nmap -sn', desc: 'Ping Scan — Solo detecta hosts activos, no escanea puertos' },
+  quick:   { cmd: 'nmap -T4 -F', desc: 'Escaneo rápido — Puertos más comunes con alta velocidad' },
+  regular: { cmd: 'nmap -sV', desc: 'Escaneo regular — Detección de versiones de servicios' },
+  intense: { cmd: 'nmap -T4 -A -v', desc: 'Escaneo intenso — OS, versiones, scripts, traceroute' },
+  udp:     { cmd: 'nmap -sU -T4', desc: 'Escaneo UDP — Detecta servicios UDP (más lento)' },
+  vuln:    { cmd: 'nmap --script vuln -T4', desc: 'Vulnerabilidades — Busca CVEs con scripts NSE' },
+};
+
+const nmapSimHosts = [
+  { ip:'192.168.1.1',   mac:'aa:bb:cc:11:22:33', vendor:'Cisco',         os:'IOS 15.x',          ports:[{p:22,s:'open',svc:'ssh',ver:'OpenSSH 7.4'},{p:80,s:'open',svc:'http',ver:'Cisco HTTP'},{p:443,s:'open',svc:'https',ver:'Cisco HTTPS'},{p:161,s:'open',svc:'snmp',ver:'SNMPv2c'}]},
+  { ip:'192.168.1.10',  mac:'de:ad:be:ef:01:10', vendor:'Dell',          os:'Windows Server 2022', ports:[{p:22,s:'filtered',svc:'ssh',ver:''},{p:80,s:'open',svc:'http',ver:'IIS 10.0'},{p:135,s:'open',svc:'msrpc',ver:''},{p:389,s:'open',svc:'ldap',ver:'Microsoft AD'},{p:443,s:'open',svc:'https',ver:'IIS 10.0'},{p:445,s:'open',svc:'smb',ver:''},{p:3389,s:'open',svc:'rdp',ver:'Microsoft RDP'}]},
+  { ip:'192.168.1.20',  mac:'de:ad:be:ef:01:20', vendor:'HP',            os:'Ubuntu Server 22.04', ports:[{p:22,s:'open',svc:'ssh',ver:'OpenSSH 8.9'},{p:80,s:'open',svc:'http',ver:'Apache 2.4.54'},{p:443,s:'open',svc:'https',ver:'Apache 2.4.54'},{p:3306,s:'filtered',svc:'mysql',ver:''}]},
+  { ip:'192.168.1.30',  mac:'de:ad:be:ef:01:30', vendor:'Synology',      os:'DSM 7.2',            ports:[{p:22,s:'open',svc:'ssh',ver:'OpenSSH 8.0'},{p:80,s:'open',svc:'http',ver:'nginx'},{p:443,s:'open',svc:'https',ver:'nginx'},{p:5000,s:'open',svc:'http',ver:'DSM 7.2'},{p:139,s:'open',svc:'smb',ver:''},{p:445,s:'open',svc:'smb',ver:''}]},
+  { ip:'192.168.1.45',  mac:'a8:5e:45:12:34:56', vendor:'Intel',         os:'Windows 11 Pro',     ports:[{p:135,s:'open',svc:'msrpc',ver:''},{p:445,s:'open',svc:'smb',ver:''},{p:3389,s:'filtered',svc:'rdp',ver:''}]},
+  { ip:'192.168.1.50',  mac:'de:ad:be:ef:01:50', vendor:'Raspberry Pi',  os:'Raspbian 11',        ports:[{p:22,s:'open',svc:'ssh',ver:'OpenSSH 8.4'},{p:80,s:'open',svc:'http',ver:'lighttpd 1.4'},{p:1883,s:'open',svc:'mqtt',ver:'Mosquitto 2.0'}]},
+  { ip:'192.168.1.100', mac:'de:ad:be:ef:01:60', vendor:'Ubiquiti',      os:'UniFi OS 3.1',       ports:[{p:22,s:'open',svc:'ssh',ver:'OpenSSH 8.0'},{p:443,s:'open',svc:'https',ver:'UniFi'},{p:8080,s:'open',svc:'http',ver:'UniFi Controller'},{p:8443,s:'open',svc:'https',ver:'UniFi'}]},
+  { ip:'192.168.1.200', mac:'de:ad:be:ef:01:70', vendor:'HP',            os:'LaserJet FW',        ports:[{p:80,s:'open',svc:'http',ver:'HP Web Jetadmin'},{p:443,s:'open',svc:'https',ver:''},{p:9100,s:'open',svc:'jetdirect',ver:''},{p:515,s:'open',svc:'printer',ver:''}]},
+];
+
+function updateNmapCmdPreview() {
+  const target = document.getElementById('nmap-target').value;
+  const profile = document.getElementById('nmap-profile').value;
+  const p = nmapProfiles[profile];
+  document.getElementById('nmap-cmd-preview').textContent = p.cmd + ' ' + target;
+}
+
+document.addEventListener('change', function(e) {
+  if(e.target.id === 'nmap-profile' || e.target.id === 'nmap-target') updateNmapCmdPreview();
+});
+
+function nmapLog(text, cls='') {
+  const out = document.getElementById('nmap-tab-output');
+  const div = document.createElement('div');
+  div.className = 'nmap-output-line ' + cls;
+  div.textContent = text;
+  out.appendChild(div);
+  out.scrollTop = out.scrollHeight;
+}
+
+function switchNmapTab(tab, btn) {
+  document.querySelectorAll('.nmap-tab-content').forEach(t => t.style.display='none');
+  document.querySelectorAll('.nmap-tab-btn').forEach(b => { b.classList.remove('active'); b.style.color='#555'; b.style.borderBottom='2px solid transparent'; });
+  document.getElementById('nmap-tab-'+tab).style.display='block';
+  btn.classList.add('active');
+  btn.style.color='#e94560';
+  btn.style.borderBottom='2px solid #e94560';
+  if(tab==='topology') setTimeout(drawTopology, 50);
+}
+
+function runNmapScan() {
+  if(nmapScanning) return;
+  nmapScanning = true;
+  nmapHosts = [];
+  const btn = document.getElementById('nmap-scan-btn');
+  const target = document.getElementById('nmap-target').value;
+  const profile = document.getElementById('nmap-profile').value;
+  const p = nmapProfiles[profile];
+  btn.textContent = '⏳ Escaneando...';
+  btn.style.background = '#333';
+
+  // Clear outputs
+  document.getElementById('nmap-tab-output').innerHTML = '';
+  document.getElementById('nmap-ports-body').innerHTML = '';
+  document.getElementById('nmap-host-list').innerHTML = '';
+
+  // Show progress
+  document.getElementById('nmap-progress-wrap').style.display = 'block';
+  let progress = 0;
+  const progInterval = setInterval(() => {
+    progress = Math.min(progress + Math.random()*8, 90);
+    document.getElementById('nmap-progress-bar').style.width = progress + '%';
+  }, 200);
+
+  // Simulate output lines
+  const lines = [
+    { delay:100,  text:`Starting Nmap 7.94 ( https://nmap.org )`, cls:'nmap-line-header' },
+    { delay:300,  text:`Nmap scan report — Target: ${target}`, cls:'nmap-line-info' },
+    { delay:500,  text:`${p.desc}`, cls:'nmap-line-muted' },
+    { delay:700,  text:`Host discovery enabled. All 256 addresses scanned.`, cls:'nmap-line-muted' },
+    { delay:1000, text:``, cls:'' },
+  ];
+
+  const selectedHosts = profile === 'ping'
+    ? nmapSimHosts.slice(0,5)
+    : nmapSimHosts;
+
+  let lineDelay = 1200;
+  selectedHosts.forEach((host, hi) => {
+    const hostLines = [
+      { delay: lineDelay, text: `Nmap scan report for ${host.ip}`, cls:'nmap-line-host' },
+      { delay: lineDelay+150, text: `Host is up (${(Math.random()*0.02+0.001).toFixed(4)}s latency).`, cls:'nmap-line-info' },
+      { delay: lineDelay+250, text: `MAC Address: ${host.mac} (${host.vendor})`, cls:'nmap-line-muted' },
+    ];
+    if(profile !== 'ping') {
+      hostLines.push({ delay: lineDelay+350, text:`PORT      STATE     SERVICE  VERSION`, cls:'nmap-line-muted' });
+      host.ports.forEach((port, pi) => {
+        const portLine = `${String(port.p+'/tcp').padEnd(10)}${port.s.padEnd(10)}${port.svc.padEnd(9)}${port.ver}`;
+        hostLines.push({ delay: lineDelay+450+pi*80, text: portLine, cls: port.s==='open'?'nmap-line-open': port.s==='filtered'?'nmap-line-filtered':'nmap-line-closed' });
+      });
+      if(profile==='intense'||profile==='vuln') {
+        hostLines.push({ delay: lineDelay+600+host.ports.length*80, text:`OS: ${host.os}`, cls:'nmap-line-info' });
+      }
+    }
+    hostLines.push({ delay: lineDelay+700+host.ports.length*80, text:``, cls:'' });
+    lines.push(...hostLines);
+    lineDelay += 900 + host.ports.length*80;
+
+    // Schedule host chip
+    setTimeout(() => {
+      nmapHosts.push(host);
+      addNmapHostChip(host);
+      addPortsRows(host);
+    }, lineDelay - 200);
+  });
+
+  // Final summary
+  const totalPorts = selectedHosts.reduce((a,h) => a+h.ports.filter(p=>p.s==='open').length, 0);
+  lines.push(
+    { delay: lineDelay+200, text:`Nmap done: ${selectedHosts.length} IP address${selectedHosts.length>1?'es':''} (${selectedHosts.length} hosts up) scanned`, cls:'nmap-line-header' },
+    { delay: lineDelay+300, text:`Total open ports found: ${totalPorts}`, cls:'nmap-line-open' },
+    { delay: lineDelay+400, text:`Scan completed in ${(lineDelay/1000).toFixed(1)}s`, cls:'nmap-line-muted' },
+  );
+
+  lines.forEach(l => setTimeout(() => nmapLog(l.text, l.cls), l.delay));
+
+  setTimeout(() => {
+    clearInterval(progInterval);
+    document.getElementById('nmap-progress-bar').style.width = '100%';
+    document.getElementById('nmap-progress-label').textContent = '✓ Completado';
+    btn.textContent = '▶ ESCANEAR';
+    btn.style.background = '#e94560';
+    nmapScanning = false;
+    drawTopology();
+  }, lineDelay+600);
+}
+
+function addNmapHostChip(host) {
+  const list = document.getElementById('nmap-host-list');
+  const chip = document.createElement('div');
+  chip.className = 'nmap-host-chip';
+  chip.dataset.ip = host.ip;
+  const openCount = host.ports.filter(p=>p.s==='open').length;
+  chip.innerHTML = `<span class="dot"></span><span style="flex:1">${host.ip}</span><span style="font-size:.55rem;color:#555">${openCount}p</span>`;
+  chip.onclick = () => selectNmapHost(host, chip);
+  list.appendChild(chip);
+}
+
+function addPortsRows(host) {
+  const tbody = document.getElementById('nmap-ports-body');
+  // Clear "no data" row
+  const noDataRow = document.getElementById('nmap-no-data-row');
+  if(noDataRow) noDataRow.remove();
+  host.ports.forEach(port => {
+    const tr = document.createElement('tr');
+    tr.style.borderBottom = '1px solid #0f3460';
+    const stateColor = port.s==='open'?'#22c55e': port.s==='filtered'?'#f59e0b':'#ef4444';
+    tr.innerHTML = `
+      <td style="padding:.35rem .75rem;font-family:'DM Mono',monospace;font-size:.66rem;color:#a78bfa">${host.ip}</td>
+      <td style="padding:.35rem .75rem;font-family:'DM Mono',monospace;font-size:.66rem;color:#ccc">${port.p}/tcp</td>
+      <td style="padding:.35rem .75rem;font-family:'DM Mono',monospace;font-size:.66rem;color:${stateColor}">${port.s}</td>
+      <td style="padding:.35rem .75rem;font-family:'DM Mono',monospace;font-size:.66rem;color:#60a5fa">${port.svc}</td>
+      <td style="padding:.35rem .75rem;font-family:'DM Mono',monospace;font-size:.66rem;color:#888">${port.ver||'—'}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function selectNmapHost(host, chip) {
+  document.querySelectorAll('.nmap-host-chip').forEach(c => c.classList.remove('selected'));
+  chip.classList.add('selected');
+  nmapSelectedHost = host;
+  const openPorts = host.ports.filter(p=>p.s==='open');
+  const filtPorts = host.ports.filter(p=>p.s==='filtered');
+  const detail = document.getElementById('nmap-host-detail-content');
+  detail.innerHTML = `
+    <div style="margin-bottom:1rem">
+      <div style="color:#e94560;font-size:.8rem;margin-bottom:.5rem">▌ ${host.ip}</div>
+      <div style="color:#a78bfa">Vendor: ${host.vendor}</div>
+      <div style="color:#60a5fa">OS detectado: ${host.os}</div>
+      <div style="color:#888">MAC: ${host.mac}</div>
+    </div>
+    <div style="margin-bottom:.75rem">
+      <div style="color:#555;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem">Resumen de puertos</div>
+      <div style="color:#22c55e">✓ Abiertos: ${openPorts.length}</div>
+      <div style="color:#f59e0b">⚠ Filtrados: ${filtPorts.length}</div>
+      <div style="color:#ef4444">✗ Cerrados: ${host.ports.filter(p=>p.s==='closed').length}</div>
+    </div>
+    <div>
+      <div style="color:#555;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem">Servicios abiertos</div>
+      ${openPorts.map(p=>`<div style="color:#ccc;padding:.2rem 0;border-bottom:1px solid #0f3460"><span style="color:#22c55e">${p.p}/tcp</span>  <span style="color:#60a5fa">${p.svc}</span>  <span style="color:#888">${p.ver||''}</span></div>`).join('')}
+    </div>
+  `;
+}
+
+function drawTopology() {
+  const canvas = document.getElementById('nmap-topology-canvas');
+  if(!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.parentElement.clientWidth || 600;
+  const H = 380;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = '#0d0d1a';
+  ctx.fillRect(0,0,W,H);
+
+  if(nmapHosts.length === 0) {
+    ctx.fillStyle = '#333';
+    ctx.font = '12px monospace';
+    ctx.fillText('Ejecuta un escaneo para ver la topología de red', W/2-160, H/2);
+    return;
+  }
+
+  // Draw router at center
+  const cx = W/2, cy = H/2;
+  const radius = Math.min(W,H)*0.32;
+
+  // Draw connections first
+  ctx.strokeStyle = 'rgba(233,69,96,0.2)';
+  ctx.lineWidth = 1;
+  nmapHosts.forEach((host, i) => {
+    const angle = (i / nmapHosts.length) * Math.PI * 2 - Math.PI/2;
+    const hx = cx + Math.cos(angle)*radius;
+    const hy = cy + Math.sin(angle)*radius;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(hx, hy);
+    ctx.stroke();
+  });
+
+  // Router node
+  ctx.fillStyle = '#e94560';
+  ctx.beginPath(); ctx.arc(cx, cy, 18, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 11px monospace'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('GW', cx, cy);
+  ctx.fillStyle = '#e94560'; ctx.font = '9px monospace';
+  ctx.fillText('192.168.1.1', cx, cy+28);
+
+  // Host nodes
+  nmapHosts.forEach((host, i) => {
+    const angle = (i / nmapHosts.length) * Math.PI * 2 - Math.PI/2;
+    const hx = cx + Math.cos(angle)*radius;
+    const hy = cy + Math.sin(angle)*radius;
+    const openPorts = host.ports.filter(p=>p.s==='open').length;
+    const color = openPorts > 4 ? '#f59e0b' : openPorts > 2 ? '#60a5fa' : '#22c55e';
+
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.arc(hx, hy, 12, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#000'; ctx.font = 'bold 8px monospace'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(openPorts+'p', hx, hy);
+
+    ctx.fillStyle = color; ctx.font = '8px monospace';
+    const ipShort = host.ip.split('.').slice(-1)[0];
+    ctx.fillText('.'+ipShort, hx, hy+22);
+    ctx.fillStyle = '#666'; ctx.font = '7px monospace';
+    ctx.fillText(host.vendor.substring(0,8), hx, hy+32);
+  });
+
+  // Legend
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '9px monospace';
+  [['#22c55e','1-2 puertos'],['#60a5fa','3-4 puertos'],['#f59e0b','5+ puertos']].forEach(([c,t],i) => {
+    ctx.fillStyle = c; ctx.beginPath(); ctx.arc(12, H-45+i*14, 4, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#555'; ctx.fillText(t, 22, H-42+i*14);
+  });
+}
+
+function filterOS(type, btn) {
+  document.querySelectorAll('.os-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('.os-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const badge = card.dataset.badge;
+    if(type==='all' || badge===type) { card.style.display=''; visible++; }
+    else card.style.display='none';
+  });
+  document.getElementById('os-count-label').textContent =
+    type==='all' ? `Mostrando todas las herramientas (${visible})` : `Filtrando por categoría — ${visible} herramientas`;
+}
+
+function initOpenSource() {
+  osInit = true;
+  const grid = document.getElementById('os-grid');
+  osTools.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'os-card reveal' + (t.gui ? ' has-gui' : '');
+    card.dataset.badge = t.badge;
+    card.style.transitionDelay = (i*0.04)+'s';
+    const guiBadge = t.gui ? '<div style="font-family:DM Mono,monospace;font-size:.58rem;color:var(--accent);margin-top:.5rem;letter-spacing:.06em">▶ Haz clic para abrir GUI interactiva</div>' : '';
+    card.innerHTML = `
+      <span class="os-card-badge badge-${t.badge}">${t.badgeText}</span>
+      <span class="os-card-icon">${t.icon}</span>
+      <div class="os-card-name">${t.name}</div>
+      <div class="os-card-cat">${t.cat}</div>
+      <div class="os-card-desc">${t.desc}</div>
+      <div class="os-card-tags">${t.tags.map(tag=>`<span class="os-card-tag">${tag}</span>`).join('')}</div>
+      ${guiBadge}
+    `;
+    if(t.gui) {
+      card.onclick = () => {
+        const guiEl = document.getElementById('nmap-gui');
+        const isOpen = guiEl.style.display !== 'none';
+        guiEl.style.display = isOpen ? 'none' : 'block';
+        if(!isOpen) { guiEl.scrollIntoView({behavior:'smooth',block:'nearest'}); updateNmapCmdPreview(); }
+      };
+    }
+    grid.appendChild(card);
+    setTimeout(() => card.classList.add('visible'), i*50);
+  });
+}
+
+// ═══════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════
+// SCROLL REVEAL
+// ═══════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
