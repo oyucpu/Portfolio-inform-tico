@@ -363,11 +363,7 @@
       <div class="info-block-value">Soporte Técnico N1 / N2</div>
       <div class="info-block-sub">Gestión de incidencias, troubleshooting y atención a usuarios finales</div>
     </div>
-    <div class="info-block">
-      <div class="info-block-label">También trabajo en</div>
-      <div class="info-block-value">Administración de Sistemas</div>
-      <div class="info-block-sub">Gestión de usuarios, configuración de equipos y mantenimiento de infraestructura</div>
-    </div>
+    
     <div class="info-block">
       <div class="info-block-label">Formación</div>
       <div class="info-block-value">CFGM SMR + Cert. Profesionalidad Nv2 y Nv3</div>
@@ -418,7 +414,7 @@
         <p class="skill-card-desc">Administración básica de Microsoft 365, gestión de cuentas y licencias, soporte en entornos híbridos y migración de datos.</p>
         <div class="tags"><span class="tag">Microsoft 365</span><span class="tag">Azure AD</span><span class="tag">OneDrive</span><span class="tag">Teams</span></div>
       </div>
-    </div>
+          </div>
   </div>
 </section>
 
@@ -431,9 +427,7 @@
 
     <div class="projects-tabs">
       <button class="proj-tab active" onclick="showTab('wireshark',this)">🦈 Wireshark</button>
-      <button class="proj-tab" onclick="showTab('traceroute',this)">🗺️ Traceroute</button>
       <button class="proj-tab" onclick="showTab('terminal',this)">⬛ CMD</button>
-      <button class="proj-tab" onclick="showTab('trivial',this)">🎮 Trivial de Comandos</button>
       <button class="proj-tab" onclick="showTab('linux',this)">🐧 Terminal Linux</button>
       <button class="proj-tab" onclick="showTab('opensource',this)">🔓 Open Source</button>
     </div>
@@ -479,28 +473,6 @@
       </div>
     </div>
 
-    <!-- ═══ TRACEROUTE ═══ -->
-    <div id="panel-traceroute" class="proj-panel">
-      <div class="win-chrome">
-        <div class="win-titlebar">
-          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
-          <span class="win-title">tracert — Trazado de rutas de red</span>
-        </div>
-        <div class="tr-body">
-          <div class="tr-prompt" id="tr-prompt">C:\Users\Antonio&gt; tracert google.com</div>
-          <div class="tr-output" id="tr-output"></div>
-        </div>
-        <div class="tr-controls">
-          <input class="tr-input" id="tr-input" value="google.com" placeholder="Introduce un dominio o IP...">
-          <button class="tr-run-btn" id="tr-btn" onclick="runTraceroute()">▶ Ejecutar</button>
-        </div>
-        <div class="tr-legend">
-          <span><span class="dot-green"></span> &lt;30ms — Excelente</span>
-          <span><span class="dot-red"></span> &gt;100ms — Latencia alta</span>
-          <span><span class="dot-gray"></span> * * * — Sin respuesta</span>
-        </div>
-      </div>
-    </div>
 
     <!-- ═══ TERMINAL CMD ═══ -->
     <div id="panel-terminal" class="proj-panel">
@@ -520,52 +492,6 @@
       </div>
     </div>
 
-    <!-- ═══ TRIVIAL ═══ -->
-    <div id="panel-trivial" class="proj-panel">
-      <div class="win-chrome trivial-wrap">
-        <div class="win-titlebar" style="background:#111;border-bottom:1px solid #1e1e1e">
-          <div class="win-btn red"></div><div class="win-btn yellow"></div><div class="win-btn green"></div>
-          <span class="win-title" style="color:#555">CMD Quest — Trivial de Comandos Windows</span>
-          <span style="margin-left:auto;font-family:'DM Mono',monospace;font-size:.6rem;color:#444">v1.0 · nivel <span id="tv-level-label">1</span></span>
-        </div>
-        <div class="trivial-win-body">
-          <div class="trivial-left">
-            <div class="trivial-screen">
-              <div class="tq-label">Pregunta <span id="tq-num">1</span> / <span id="tq-total">15</span></div>
-              <div class="tq-text" id="tq-text">Cargando...</div>
-              <div class="tq-hint" id="tq-hint"></div>
-            </div>
-            <div class="trivial-answers" id="tq-answers"></div>
-            <div class="trivial-cmd-input-row">
-              <input class="trivial-cmd-field" id="tv-cmd-input" placeholder="Escribe el comando exacto aquí..." autocomplete="off" spellcheck="false">
-              <button class="trivial-cmd-btn" onclick="checkTrivialInput()">ENTER ↵</button>
-            </div>
-            <button class="trivial-next-btn" id="tv-next-btn" onclick="nextTrivialQ()">Siguiente pregunta →</button>
-          </div>
-          <div class="trivial-right">
-            <div class="trivial-stats">
-              <div class="ts-row"><span class="ts-label">Nivel</span><span class="ts-val" id="tv-level">1</span></div>
-              <div class="ts-row"><span class="ts-label">Puntos</span><span class="ts-val good" id="tv-score">0</span></div>
-              <div class="ts-row"><span class="ts-label">Correctas</span><span class="ts-val good" id="tv-correct">0</span></div>
-              <div class="ts-row"><span class="ts-label">Falladas</span><span class="ts-val bad" id="tv-wrong">0</span></div>
-              <div class="ts-row"><span class="ts-label">Racha</span><span class="ts-val" id="tv-streak">0 🔥</span></div>
-              <div class="ts-progress"><div class="ts-bar" id="tv-progress" style="width:0%"></div></div>
-            </div>
-            <div class="trivial-map">
-              <div class="tmap-label">Mapa de progreso</div>
-              <div class="tmap-grid" id="tv-map"></div>
-            </div>
-            <div class="trivial-log">
-              <div class="log-label">Registro</div>
-              <div id="tv-log"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
     <!-- ═══ LINUX ═══ -->
     <div id="panel-linux" class="proj-panel">
@@ -596,7 +522,6 @@
             <button class="os-filter-btn" onclick="filterOS('red',this)">Seguridad</button>
             <button class="os-filter-btn" onclick="filterOS('blue',this)">Infraestructura</button>
             <button class="os-filter-btn" onclick="filterOS('green',this)">Servicios</button>
-            <button class="os-filter-btn" onclick="filterOS('purple',this)">Monitorización</button>
           </div>
         </div>
 
@@ -720,18 +645,15 @@
         </div>
         <div class="aside-block">
           <div class="aside-label">Idiomas</div>
-          <div class="aside-value">Español (nativo) · Inglés técnico (A1)</div>
+          <div class="aside-value">Español (nativo) · Inglés técnico (B1)</div>
         </div>
         <div class="aside-block">
           <div class="aside-label">Certificados de Profesionalidad</div>
           <ul class="cert-list">
             <li>Nivel 2 — Operación de Sistemas Informáticos</li>
             <li>Nivel 2 — Montaje y Reparación de Sistemas Microinformáticos</li>
-            <li>Nivel 2 — Operación de Sistemas de Voz y Datos</li>
-            <li>Nivel 3 — Seguridad Informática | 90 Horas</li>
-            <li>Nivel 2 — Operación de Redes Departamentales</li>
-            <li>Nivel 2 — Sistemas Microinformáticos</li>
-            <li>Nivel 2 — Operación de Sistemas Informáticos</li>
+            <li>Nivel 3 — Administración de Servicios de Internet</li>
+            <li>Nivel 3 — Seguridad Informática</li>
           </ul>
         </div>
       </div>
@@ -782,7 +704,6 @@ function showTab(id, btn) {
   document.getElementById('panel-'+id).classList.add('active');
   btn.classList.add('active');
   if(id==='terminal' && !cmdInit) initTerminal();
-  if(id==='trivial' && !trivialInit) initTrivial();
   if(id==='linux' && !linuxInit) initLinux();
   if(id==='opensource') { if(!osInit) initOpenSource(); }
 }
@@ -951,54 +872,6 @@ function clearCapture() {
 function exportCapture() { alert('En una captura real se exportaría como archivo .pcap\nPaquetes capturados: ' + allPackets.length); }
 function updateCount() { document.getElementById('ws-count').textContent = allPackets.length; }
 function updateShown() { document.getElementById('ws-shown').textContent = document.getElementById('ws-body').rows.length; }
-
-// ═══════════════════════════════════
-// TRACEROUTE
-// ═══════════════════════════════════
-const trRoutes = {
-  'google.com':     [{ip:'192.168.1.1',host:'router.local',ms:[1,2,1]},{ip:'10.0.0.1',host:'isp-gateway.net',ms:[8,9,8]},{ip:'213.0.10.1',host:'movistar-backbone.es',ms:[15,14,16]},{ip:'72.14.202.1',host:'google-peering.net',ms:[18,17,19]},{ip:'108.170.246.1',host:'google-bb.net',ms:[20,21,20]},{ip:'142.250.185.46',host:'mad07s09-in-f14.1e100.net',ms:[22,21,23]}],
-  '8.8.8.8':        [{ip:'192.168.1.1',host:'router.local',ms:[1,1,2]},{ip:'10.0.0.1',host:'isp-gw.net',ms:[7,8,7]},{ip:'213.0.10.5',host:'movistar.es',ms:[13,13,14]},{ip:'8.8.8.8',host:'dns.google',ms:[19,19,20]}],
-  'cloudflare.com': [{ip:'192.168.1.1',host:'router.local',ms:[1,1,1]},{ip:'10.0.0.1',host:'isp-gw.net',ms:[6,7,6]},{ip:'185.176.24.1',host:'cf-backbone.net',ms:[11,12,11]},{ip:'104.16.133.229',host:'cloudflare.com',ms:[14,13,14]}],
-  'default':        [{ip:'192.168.1.1',host:'router.local',ms:[1,2,1]},{ip:'10.0.0.1',host:'isp-gw.net',ms:[8,9,9]},{ip:'213.0.10.1',host:'backbone.es',ms:[14,15,14]},{ip:'*',host:'*',ms:['*','*','*']},{ip:'1.2.3.4',host:'destino.net',ms:[30,31,30]}],
-};
-
-function runTraceroute() {
-  const host = document.getElementById('tr-input').value.trim() || 'google.com';
-  const btn = document.getElementById('tr-btn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Ejecutando...';
-  document.getElementById('tr-prompt').textContent = `C:\\Users\\Antonio> tracert ${host}`;
-  const out = document.getElementById('tr-output');
-  out.innerHTML = `<div style="color:#8b949e;margin-bottom:.5rem">Determinando la ruta a ${host} con un máximo de 30 saltos:</div>`;
-  const hops = trRoutes[host] || trRoutes['default'];
-  let i = 0;
-  function nextHop() {
-    if(i >= hops.length) {
-      out.innerHTML += `<div style="color:#8b949e;margin-top:.5rem">Seguimiento de ruta completo.</div>`;
-      btn.disabled = false; btn.textContent = '▶ Ejecutar';
-      return;
-    }
-    const hop = hops[i]; i++;
-    const avgMs = hop.ms[0]==='*' ? null : hop.ms.reduce((a,b)=>a+b,0)/hop.ms.length;
-    const isTimeout = hop.ip==='*';
-    const div = document.createElement('div');
-    div.className = 'tr-hop';
-    const barWidth = avgMs ? Math.min((avgMs/150)*100,100) : 0;
-    const msColor = avgMs ? (avgMs>80?'high':'') : 'timeout';
-    div.innerHTML = `
-      <span class="tr-hop-num">${i}</span>
-      <span class="tr-hop-ip ${isTimeout?'tr-hop-ms timeout':''}">${isTimeout?'*  *  *':hop.ip}</span>
-      ${hop.ms.map(m=>`<span class="tr-hop-ms ${m==='*'?'timeout':avgMs>80?'high':''}">${m==='*'?'*':m+' ms'}</span>`).join('')}
-      <span class="tr-hop-host">${isTimeout?'Sin respuesta':hop.host}</span>
-    `;
-    out.appendChild(div);
-    setTimeout(()=>div.classList.add('visible'),50);
-    out.parentElement.scrollTop = out.parentElement.scrollHeight;
-    setTimeout(nextHop, 600 + Math.random()*400);
-  }
-  setTimeout(nextHop, 400);
-}
-runTraceroute();
 
 // ═══════════════════════════════════
 // TERMINAL CMD
@@ -1263,170 +1136,6 @@ function handleCmdKey(e) {
     input.value = histIdx>=0 ? cmdHistory[histIdx] : '';
     e.preventDefault();
   }
-}
-
-// ═══════════════════════════════════
-// TRIVIAL DE COMANDOS
-// ═══════════════════════════════════
-let trivialInit = false;
-let tvScore=0, tvCorrect=0, tvWrong=0, tvStreak=0, tvCurrent=0, tvAnswered=false;
-const TOTAL_Q = 15;
-
-const trivialQuestions = [
-  {q:'¿Qué comando muestra la configuración IP del equipo?', correct:'ipconfig', answers:['ipconfig','ifconfig','netstat','ipinfo'], hint:'Abreviatura de "IP Configuration"'},
-  {q:'¿Qué comando comprueba si hay conectividad con otro equipo?', correct:'ping', answers:['ping','tracert','route','netstat'], hint:'Nombre del sonido de los sonares'},
-  {q:'¿Qué comando traza la ruta de red hasta un destino?', correct:'tracert', answers:['tracert','route','ping','nslookup'], hint:'Trace Route → en Windows se abrevia...'},
-  {q:'¿Con qué comando ves las conexiones de red activas?', correct:'netstat', answers:['netstat','ipconfig','arp','route'], hint:'"NET statistics"'},
-  {q:'¿Qué comando consulta registros DNS de un dominio?', correct:'nslookup', answers:['nslookup','ping','ipconfig','dig'], hint:'"Name Server Lookup"'},
-  {q:'¿Con qué comando ves la tabla ARP del sistema?', correct:'arp -a', answers:['arp -a','arp -n','arp -l','netstat -arp'], hint:'ARP, con la opción que muestra todo'},
-  {q:'¿Qué comando muestra los procesos en ejecución?', correct:'tasklist', answers:['tasklist','ps','proclist','taskmgr'], hint:'Lista de tareas en Windows'},
-  {q:'¿Cómo limpias la pantalla del símbolo del sistema?', correct:'cls', answers:['cls','clear','clrscr','reset'], hint:'"CLear Screen" en Windows (3 letras)'},
-  {q:'¿Qué comando muestra el nombre del equipo?', correct:'hostname', answers:['hostname','computername','sysinfo','whoami'], hint:'Nombre del host...'},
-  {q:'¿Qué comando muestra el usuario actual del sistema?', correct:'whoami', answers:['whoami','whoim','getuser','id'], hint:'"Who am I?" en inglés'},
-  {q:'¿Con qué opción de ipconfig liberas la IP asignada por DHCP?', correct:'ipconfig /release', answers:['ipconfig /release','ipconfig /flush','ipconfig /renew','ipconfig /reset'], hint:'Liberar = release en inglés'},
-  {q:'¿Con qué opción de ipconfig solicitas una nueva IP al DHCP?', correct:'ipconfig /renew', answers:['ipconfig /renew','ipconfig /release','ipconfig /refresh','ipconfig /new'], hint:'Renovar = renew en inglés'},
-  {q:'¿Qué comando vacía la caché DNS del sistema?', correct:'ipconfig /flushdns', answers:['ipconfig /flushdns','ipconfig /cleardns','netstat /dns','dnscache /clear'], hint:'Flush = vaciar/limpiar'},
-  {q:'¿Qué comando muestra la tabla de enrutamiento IP?', correct:'route print', answers:['route print','route show','netstat -r','ipconfig /route'], hint:'"route" seguido de la acción de imprimir'},
-  {q:'¿Qué comando muestra información detallada del sistema operativo y hardware?', correct:'systeminfo', answers:['systeminfo','sysinfo','wininfo','msinfo'], hint:'Información del sistema... en una sola palabra'},
-];
-
-const tvMap = [];
-function initTrivial() {
-  trivialInit = true;
-  // Build map
-  const mapEl = document.getElementById('tv-map');
-  for(let i=0;i<TOTAL_Q;i++){
-    const cell = document.createElement('div');
-    cell.className = 'tmap-cell locked';
-    cell.id = 'tmap-'+i;
-    cell.textContent = i+1;
-    mapEl.appendChild(cell);
-    tvMap.push(cell);
-  }
-  tvMap[0].className = 'tmap-cell current';
-  loadTrivialQ(0);
-}
-
-function loadTrivialQ(idx) {
-  tvAnswered = false;
-  const q = trivialQuestions[idx];
-  document.getElementById('tq-num').textContent = idx+1;
-  document.getElementById('tq-total').textContent = TOTAL_Q;
-  document.getElementById('tq-text').textContent = q.q;
-  document.getElementById('tq-hint').textContent = '';
-  document.getElementById('tv-cmd-input').value = '';
-  document.getElementById('tv-next-btn').classList.remove('show');
-  document.getElementById('tv-level-label').textContent = Math.floor(idx/5)+1;
-  document.getElementById('tv-level').textContent = Math.floor(idx/5)+1;
-
-  // Shuffle answers
-  const shuffled = [...q.answers].sort(()=>Math.random()-.5);
-  const answersEl = document.getElementById('tq-answers');
-  answersEl.innerHTML = '';
-  shuffled.forEach(a => {
-    const btn = document.createElement('button');
-    btn.className = 'tq-answer';
-    btn.textContent = a;
-    btn.onclick = () => checkTrivialAnswer(a, q.correct);
-    answersEl.appendChild(btn);
-  });
-
-  // Update progress
-  document.getElementById('tv-progress').style.width = (idx/TOTAL_Q*100)+'%';
-}
-
-function checkTrivialAnswer(answer, correct) {
-  if(tvAnswered) return;
-  tvAnswered = true;
-  const isRight = answer.toLowerCase() === correct.toLowerCase();
-  handleTrivialResult(isRight, correct);
-}
-
-function checkTrivialInput() {
-  if(tvAnswered) return;
-  const input = document.getElementById('tv-cmd-input').value.trim();
-  if(!input) return;
-  const correct = trivialQuestions[tvCurrent].correct;
-  const isRight = input.toLowerCase() === correct.toLowerCase();
-  tvAnswered = true;
-  handleTrivialResult(isRight, correct);
-}
-
-document.addEventListener('keydown', function(e) {
-  if(e.key==='Enter' && document.getElementById('tv-cmd-input') === document.activeElement) {
-    checkTrivialInput();
-  }
-});
-
-function handleTrivialResult(isRight, correct) {
-  // Mark answers
-  document.querySelectorAll('.tq-answer').forEach(btn => {
-    btn.disabled = true;
-    if(btn.textContent === correct) btn.classList.add('correct');
-    else if(btn.textContent !== correct && !isRight) btn.classList.add('wrong');
-  });
-  document.getElementById('tv-cmd-input').disabled = true;
-
-  const q = trivialQuestions[tvCurrent];
-
-  if(isRight) {
-    tvCorrect++; tvStreak++;
-    const bonus = tvStreak>=3 ? 20 : 0;
-    tvScore += 10 + bonus;
-    tvMap[tvCurrent].className = 'tmap-cell done';
-    addTrivialLog(`✓ Correcta: ${correct}${bonus?` +${bonus} bonus racha!`:''}`, 'good');
-    document.getElementById('tq-hint').textContent = `✓ ¡Correcto! ${tvStreak>=3?'🔥 Racha x'+tvStreak+'!':''}`;
-  } else {
-    tvWrong++; tvStreak=0;
-    tvMap[tvCurrent].className = 'tmap-cell blocked';
-    addTrivialLog(`✗ Fallada. Respuesta: ${correct}`, 'bad');
-    document.getElementById('tq-hint').textContent = `✗ Incorrecto. La respuesta era: ${correct}`;
-    document.getElementById('tv-cmd-input').style.borderColor='#f44747';
-  }
-
-  document.getElementById('tv-score').textContent = tvScore;
-  document.getElementById('tv-correct').textContent = tvCorrect;
-  document.getElementById('tv-wrong').textContent = tvWrong;
-  document.getElementById('tv-streak').textContent = tvStreak + (tvStreak>=3?' 🔥':'');
-
-  if(tvCurrent < TOTAL_Q-1) {
-    document.getElementById('tv-next-btn').classList.add('show');
-    tvMap[tvCurrent+1].className = 'tmap-cell current';
-  } else {
-    // Final
-    document.getElementById('tq-text').textContent = `🎉 ¡Completado! Puntuación final: ${tvScore} pts | ${tvCorrect}/${TOTAL_Q} correctas`;
-    document.getElementById('tq-answers').innerHTML = `<button class="tq-answer correct" style="grid-column:span 2" onclick="restartTrivial()">🔄 Jugar de nuevo</button>`;
-    addTrivialLog(`Fin del juego — ${tvScore} puntos`, 'info');
-    document.getElementById('tv-progress').style.width='100%';
-  }
-}
-
-function nextTrivialQ() {
-  tvCurrent++;
-  document.getElementById('tv-cmd-input').disabled = false;
-  document.getElementById('tv-cmd-input').style.borderColor='';
-  loadTrivialQ(tvCurrent);
-}
-
-function restartTrivial() {
-  tvScore=0; tvCorrect=0; tvWrong=0; tvStreak=0; tvCurrent=0; tvAnswered=false;
-  tvMap.forEach((c,i)=>c.className=i===0?'tmap-cell current':'tmap-cell locked');
-  document.getElementById('tv-log').innerHTML='';
-  document.getElementById('tv-score').textContent=0;
-  document.getElementById('tv-correct').textContent=0;
-  document.getElementById('tv-wrong').textContent=0;
-  document.getElementById('tv-streak').textContent='0';
-  document.getElementById('tv-cmd-input').disabled=false;
-  document.getElementById('tv-cmd-input').style.borderColor='';
-  loadTrivialQ(0);
-}
-
-function addTrivialLog(msg, type) {
-  const log = document.getElementById('tv-log');
-  const div = document.createElement('div');
-  div.className = 'log-entry ' + type;
-  div.textContent = `Q${tvCurrent+1}: ${msg}`;
-  log.insertBefore(div, log.firstChild);
 }
 
 // ═══════════════════════════════════
@@ -1796,84 +1505,46 @@ function handleLxKey(e) {
 let osInit = false;
 
 const osTools = [
-  // ── SEGURIDAD (red) ──
-  {icon:'🦈', name:'Wireshark', cat:'Análisis de red', badge:'red', badgeText:'Esencial', gui:'nmap',
-   desc:'Analizador de protocolos de red. Captura y examina tráfico en tiempo real para diagnosticar problemas de conectividad.',
+  // SEGURIDAD
+  {icon:'🦈', name:'Wireshark',          cat:'Análisis de red',             badge:'red',    badgeText:'Esencial',          gui:'nmap',
+   desc:'Captura y analiza tráfico de red en tiempo real. Herramienta fundamental para diagnosticar problemas de conectividad y protocolos.',
    tags:['Captura paquetes','TCP/IP','Filtros BPF','Protocolos']},
-  {icon:'🔍', name:'Nmap / Zenmap', cat:'Escaneo de red', badge:'red', badgeText:'⚡ GUI Interactiva', gui:'nmap',
-   desc:'Escáner de puertos y seguridad. Detecta hosts, servicios y sistemas operativos. Zenmap es su interfaz gráfica oficial.',
+  {icon:'🔍', name:'Nmap / Zenmap',       cat:'Escaneo de red',              badge:'red',    badgeText:'⚡ GUI Interactiva', gui:'nmap',
+   desc:'Escáner de puertos y auditoría de red. Detecta hosts activos, servicios y sistemas operativos. Zenmap es su interfaz gráfica oficial.',
    tags:['Escaneo puertos','OS detection','Scripts NSE','Inventario']},
-  {icon:'🔒', name:'pfSense / IPTables', cat:'Firewall / Router', badge:'red', badgeText:'Seguridad',
-   desc:'Distribución open source basada en FreeBSD que actúa como firewall y router empresarial con interfaz web de gestión.',
+  {icon:'🔒', name:'pfSense',             cat:'Firewall / Router',           badge:'red',    badgeText:'Seguridad',
+   desc:'Firewall y router empresarial open source basado en FreeBSD. Gestión completa via interfaz web: VPN, reglas, tráfico.',
    tags:['Firewall','VPN','IDS/IPS','QoS']},
-  {icon:'🛡️', name:'Snort / Suricata', cat:'IDS / IPS', badge:'red', badgeText:'Seguridad',
-   desc:'Sistemas de detección y prevención de intrusiones. Monitorizan el tráfico de red en tiempo real buscando actividad maliciosa.',
-   tags:['IDS','IPS','Firmas','Alertas']},
-  {icon:'🔑', name:'OpenVPN / WireGuard', cat:'VPN', badge:'red', badgeText:'Cifrado',
-   desc:'Soluciones VPN open source para conexiones seguras. WireGuard destaca por su simplicidad y alto rendimiento.',
+  {icon:'🔑', name:'OpenVPN / WireGuard', cat:'VPN',                         badge:'red',    badgeText:'Cifrado',
+   desc:'Soluciones VPN open source para conexiones seguras. WireGuard destaca por su simplicidad y rendimiento superior.',
    tags:['Cifrado','Túneles','Acceso remoto','Site-to-site']},
-  {icon:'🔐', name:'Fail2Ban', cat:'Protección acceso', badge:'red', badgeText:'Anti-intrusión',
-   desc:'Analiza logs del sistema y bloquea automáticamente IPs con comportamiento sospechoso. Esencial para servidores expuestos.',
-   tags:['Brute-force','SSH','Iptables','Logs']},
-  // ── INFRAESTRUCTURA (blue) ──
-  {icon:'🖥️', name:'Proxmox VE', cat:'Virtualización', badge:'blue', badgeText:'Infraestructura',
-   desc:'Plataforma de virtualización open source basada en KVM y LXC. Alternativa gratuita a VMware vSphere para entornos empresariales.',
+  {icon:'💿', name:'Hirens Boot CD',      cat:'Diagnóstico y recuperación',  badge:'red',    badgeText:'Esencial',
+   desc:'USB de arranque con más de 100 herramientas para diagnóstico y reparación. Imprescindible para rescatar equipos que no arrancan.',
+   tags:['Recuperación datos','Antivirus offline','Particionado','Reparación MBR']},
+  // INFRAESTRUCTURA
+  {icon:'🖥️', name:'Proxmox VE',          cat:'Virtualización',              badge:'blue',   badgeText:'Infraestructura',
+   desc:'Plataforma de virtualización open source basada en KVM y LXC. Alternativa gratuita a VMware para entornos empresariales.',
    tags:['KVM','LXC','Clustering','Alta disponibilidad']},
-  {icon:'🐳', name:'Docker', cat:'Contenedores', badge:'blue', badgeText:'Infraestructura',
-   desc:'Plataforma de contenedores que empaqueta aplicaciones con sus dependencias. Facilita el despliegue consistente en cualquier entorno.',
+  {icon:'🐳', name:'Docker',              cat:'Contenedores',                badge:'blue',   badgeText:'Infraestructura',
+   desc:'Empaqueta aplicaciones con todas sus dependencias en contenedores. Garantiza que funcionan igual en cualquier entorno.',
    tags:['Contenedores','Imágenes','Docker Compose','Portabilidad']},
-  {icon:'🌐', name:'Apache / Nginx', cat:'Servidor web', badge:'blue', badgeText:'Infraestructura',
-   desc:'Servidores web open source de alto rendimiento. Apache es el más extendido; Nginx destaca en cargas elevadas y proxy inverso.',
-   tags:['HTTP/HTTPS','Proxy inverso','SSL/TLS','Virtual Hosts']},
-  {icon:'🐧', name:'Ubuntu Server', cat:'Sistema operativo', badge:'blue', badgeText:'Base',
-   desc:'Distribución Linux server de referencia empresarial. Soporte LTS de 5 años y amplia compatibilidad con servicios IT.',
+  {icon:'☸️', name:'Kubernetes',          cat:'Orquestación contenedores',   badge:'blue',   badgeText:'Infraestructura',
+   desc:'Orquesta y gestiona contenedores Docker en clústeres. Si Docker es el camión, Kubernetes es el sistema logístico completo.',
+   tags:['Clústeres','Pods','Escalado','Alta disponibilidad']},
+  {icon:'🐧', name:'Ubuntu Server',       cat:'Sistema operativo',           badge:'blue',   badgeText:'Base',
+   desc:'Distribución Linux server de referencia empresarial con soporte LTS de 5 años y amplia compatibilidad con servicios IT.',
    tags:['Linux','LTS','Servidores','Apt']},
-  {icon:'💾', name:'Bacula / Amanda / Clonezilla', cat:'Copias de seguridad', badge:'blue', badgeText:'Backup',
-   desc:'Sistemas de backup empresariales open source. Gestionan copias de múltiples servidores de forma centralizada y automatizada.',
-   tags:['Backup','Restauración','Programación','Multiplataforma']},
-  {icon:'🔄', name:'Ansible', cat:'Automatización', badge:'blue', badgeText:'DevOps',
-   desc:'Herramienta de automatización de infraestructura. Permite gestionar configuraciones y despliegues en múltiples servidores sin agentes.',
-   tags:['Playbooks','SSH','Idempotente','Inventario']},
-  // ── SERVICIOS (green) ──
-  {icon:'🎫', name:'GLPI', cat:'Gestión de tickets', badge:'green', badgeText:'Helpdesk',
-   desc:'Sistema de gestión de activos IT y tickets de soporte. Permite registrar, seguir y resolver incidencias de forma estructurada con ITIL.',
+  // SERVICIOS
+  {icon:'🎫', name:'GLPI',                cat:'Gestión de tickets',          badge:'green',  badgeText:'Helpdesk',
+   desc:'Sistema de gestión de activos IT y helpdesk. Registra, sigue y resuelve incidencias con metodología ITIL y SLA.',
    tags:['ITIL','Tickets','Inventario IT','SLA']},
-  {icon:'📁', name:'Samba', cat:'Compartición archivos', badge:'green', badgeText:'Integración',
-   desc:'Implementación del protocolo SMB/CIFS. Permite compartir archivos e impresoras entre Linux y Windows en redes mixtas.',
+  {icon:'📁', name:'Samba',               cat:'Compartición de archivos',    badge:'green',  badgeText:'Integración',
+   desc:'Implementación del protocolo SMB/CIFS. Comparte ficheros e impresoras entre equipos Linux y Windows en la misma red.',
    tags:['SMB/CIFS','Active Directory','NAS','Windows/Linux']},
-  {icon:'🐘', name:'Nextcloud', cat:'Nube privada', badge:'green', badgeText:'Privacidad',
-   desc:'Plataforma de almacenamiento en la nube auto-alojada. Alternativa open source a Google Drive o OneDrive para empresas.',
-   tags:['Almacenamiento','Colaboración','Calendarios','Autoalojado']},
-  {icon:'📮', name:'Postfix / Dovecot', cat:'Servidor de correo', badge:'green', badgeText:'Email',
-   desc:'Solución completa de servidor de correo electrónico open source. Postfix gestiona el envío SMTP y Dovecot el acceso IMAP/POP3.',
-   tags:['SMTP','IMAP','POP3','Antispam']},
-  {icon:'🖨️', name:'CUPS', cat:'Servidor de impresión', badge:'green', badgeText:'Impresión',
-   desc:'Sistema de impresión open source para redes. Gestiona colas de impresión y comparte impresoras en entornos Linux y mixtos.',
-   tags:['IPP','PostScript','Drivers','Compartir']},
-  {icon:'🗄️', name:'FreeIPA / OpenLDAP', cat:'Directorio de usuarios', badge:'green', badgeText:'Identidad',
-   desc:'Alternativa open source a Active Directory. Gestiona usuarios, grupos, políticas y autenticación centralizada en entornos Linux.',
-   tags:['LDAP','Kerberos','DNS','Usuarios']},
-  // ── MONITORIZACIÓN (purple) ──
-  {icon:'📊', name:'Zabbix', cat:'Monitorización', badge:'purple', badgeText:'Monitorización',
-   desc:'Plataforma de monitorización de infraestructura IT. Supervisa servidores, redes y apps con alertas en tiempo real y dashboards.',
-   tags:['Métricas','Alertas','SNMP','Dashboards']},
-  {icon:'📈', name:'Grafana + Prometheus', cat:'Métricas y dashboards', badge:'purple', badgeText:'Monitorización',
-   desc:'Combinación estándar para monitorización moderna: Prometheus recopila métricas y Grafana las visualiza en dashboards interactivos.',
-   tags:['Time-series','Dashboards','Alertas','Kubernetes']},
-  {icon:'🔎', name:'Nagios / Icinga', cat:'Monitorización de red', badge:'purple', badgeText:'Monitorización',
-   desc:'Herramientas clásicas de monitorización de infraestructura. Comprueban disponibilidad de hosts, servicios y envían alertas por email.',
-   tags:['Disponibilidad','Plugins','SNMP','Notificaciones']},
-  {icon:'📋', name:'Graylog / ELK Stack', cat:'Gestión de logs', badge:'purple', badgeText:'Logs',
-   desc:'Plataformas de centralización y análisis de logs. Permiten buscar, correlacionar y visualizar eventos de toda la infraestructura.',
-   tags:['Elasticsearch','Logstash','Kibana','SIEM']},
-  // ── NUEVAS HERRAMIENTAS ──
-  {icon:'☸️', name:'Kubernetes', cat:'Orquestación de contenedores', badge:'blue', badgeText:'Infraestructura',
-   desc:'Plataforma de orquestación de contenedores Docker. Gestiona su despliegue, escalado y disponibilidad en clústeres de servidores. Si Docker es el camión, Kubernetes es el sistema logístico completo.',
-   tags:['Clústeres','Pods','Escalado automático','Alta disponibilidad']},
-  {icon:"💿", name:"Hirens Boot CD", cat:"Diagnóstico y recuperación", badge:"red", badgeText:"Esencial",
-   desc:"CD/USB de arranque con más de 100 herramientas para diagnóstico, recuperación y reparación de sistemas. Imprescindible en el maletín de cualquier técnico informático para rescatar equipos que no arrancan.",
-   tags:["Recuperación datos","Antivirus offline","Particionado","Reparación MBR"]},
-];
+  {icon:'💾', name:'Bacula',              cat:'Copias de seguridad',         badge:'green',  badgeText:'Backup',
+   desc:'Sistema de backup empresarial open source. Gestiona copias de múltiples servidores de forma centralizada y automatizada.',
+   tags:['Backup','Restauración','Programación','Multiplataforma']},
+]
 
 // ── NMAP GUI ──
 let nmapScanning = false;
